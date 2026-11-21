@@ -1,0 +1,12 @@
+[
+  {
+    "index": 0,
+    "label": "faulty",
+    "diagnosis_id": "machine_fault"
+  },
+  {
+    "index": 1,
+    "label": "healthy",
+    "diagnosis_id": "machine_healthy"
+  }
+]

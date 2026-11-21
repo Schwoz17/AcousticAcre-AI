@@ -1,0 +1,32 @@
+{
+  "_note": "DRAFT symptom tree. Agronomist review and testing on labelled cases required before real use.",
+  "crop": "tomato",
+  "start": "q_wilt",
+  "nodes": {
+    "q_wilt": {
+      "prompt": "q_sudden_wilt_green",
+      "yes": "tomato_bacterial_wilt",
+      "no": "q_curl"
+    },
+    "q_curl": {
+      "prompt": "q_small_curled_yellow_edges",
+      "yes": "tomato_yellow_leaf_curl",
+      "no": "q_mines"
+    },
+    "q_mines": {
+      "prompt": "q_leaf_mines_fruit_holes",
+      "yes": "tomato_tuta_absoluta",
+      "no": "q_late"
+    },
+    "q_late": {
+      "prompt": "q_dark_wet_patches_spread",
+      "yes": "tomato_late_blight",
+      "no": "q_early"
+    },
+    "q_early": {
+      "prompt": "q_target_ring_spots",
+      "yes": "tomato_early_blight",
+      "no": "UNCERTAIN"
+    }
+  }
+}

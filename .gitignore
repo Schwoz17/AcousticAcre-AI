@@ -1,0 +1,17 @@
+__pycache__/
+*.pyc
+.env
+gateway/gateway.db
+ml/data/
+ml/runs/
+packs/
+
+.venv/
+**/.venv/
+*.tgz
+*.zip
+*.db
+*.sqlite3
+node_modules/
+app/dist/
+app/public/ort/

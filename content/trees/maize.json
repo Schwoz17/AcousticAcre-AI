@@ -1,0 +1,27 @@
+{
+  "_note": "DRAFT symptom tree. Agronomist review and testing on labelled cases required before real use.",
+  "crop": "maize",
+  "start": "q_faw",
+  "nodes": {
+    "q_faw": {
+      "prompt": "q_ragged_holes_frass",
+      "yes": "maize_fall_armyworm",
+      "no": "q_rust"
+    },
+    "q_rust": {
+      "prompt": "q_powdery_rust_spots",
+      "yes": "maize_common_rust",
+      "no": "q_nlb"
+    },
+    "q_nlb": {
+      "prompt": "q_long_grey_lesions",
+      "yes": "maize_northern_leaf_blight",
+      "no": "q_streak"
+    },
+    "q_streak": {
+      "prompt": "q_broken_yellow_streaks",
+      "yes": "maize_streak_virus",
+      "no": "UNCERTAIN"
+    }
+  }
+}

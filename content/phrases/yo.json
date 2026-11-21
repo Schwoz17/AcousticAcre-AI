@@ -1,0 +1,245 @@
+{
+  "lang": "yo",
+  "lang_name": "Yorùbá",
+  "version": "0.1.0-draft",
+  "reviewed": false,
+  "tts": false,
+  "draft_note": "AI-drafted, NOT reviewed. A native speaker must check every line.",
+  "reviewer": {
+    "name": "",
+    "date": "",
+    "role": ""
+  },
+  "ui": {
+    "welcome": "Ẹ kú àbọ̀ sí AcousticAcre.",
+    "choose_language": "Yan èdè",
+    "choose_crop": "Irú ohun ọ̀gbìn wo?",
+    "invalid": "Àṣàyàn kò tọ̀nà. Tún gbìyànjú.",
+    "yes": "Bẹ́ẹ̀ ni",
+    "no": "Rárá",
+    "not_sure": "A kò dá wa lójú. Àwọn àmì wọ̀nyí kò bá àìsàn kan ṣoṣo mu.",
+    "sms_sent": "A ti fi ìmọ̀ràn ránṣẹ́ nípasẹ̀ SMS.",
+    "repeat_or_help": "Tẹ 1 láti tún gbọ́, 2 láti gba ìmọ̀ràn nípasẹ̀ SMS, 9 láti bá òṣìṣẹ́ àgbẹ̀ sọ̀rọ̀.",
+    "connecting": "À ń so ọ́ pọ̀ mọ́ òṣìṣẹ́ àgbẹ̀.",
+    "no_officer": "Kò sí òṣìṣẹ́ báyìí. Jọ̀wọ́ pe ọ́fíìsì àwọn òṣìṣẹ́ àgbẹ̀ tó súnmọ́ ọ.",
+    "goodbye": "Ẹ ṣé. Ó dàbọ̀.",
+    "disclaimer": "Ìmọ̀ràn ni, kì í ṣe ìdánilójú.",
+    "help_line": "Fún ìrànlọ́wọ́ pe [nọ́mbà ìrànlọ́wọ́].",
+    "press_option": "Tẹ {n} fún {option}.",
+    "no_input": "A kò gbọ́ ìdáhùn rẹ. Jọ̀wọ́ tún pè.",
+    "retake_blurry": "Àwòrán kò mọ́. Di fóònù mú dáadáa kí o tún yà á.",
+    "retake_dark": "Àwòrán ṣókùnkùn jù. Lọ sí ibi tí ìmọ́lẹ̀ wà.",
+    "retake_bright": "Ìmọ́lẹ̀ pọ̀ jù nínú àwòrán. Ṣíji bo ewé kí o tún yà á.",
+    "retake_no_leaf": "A kò rí ewé. Jẹ́ kí ewé kan kún àwòrán.",
+    "retake_too_quiet": "Mú fóònù súnmọ́ ẹ̀rọ náà.",
+    "retake_clipping": "Gbé fóònù jìnnà díẹ̀.",
+    "retake_wind": "Dáàbò bo máíkì lọ́wọ́ afẹ́fẹ́.",
+    "retake_no_machine": "A kò gbọ́ ẹ̀rọ. Ṣé ó ń ṣiṣẹ́?",
+    "where_model_looked": "Ibi tí a tàn ìmọ́lẹ̀ sí: ibi tí ètò náà wò."
+  },
+  "crops": {
+    "cassava": "Ẹ̀gẹ́",
+    "maize": "Àgbàdo",
+    "tomato": "Tòmátì"
+  },
+  "questions": {
+    "q_leaves_twisted": "Ṣé àwọn ewé ti yí, ká, tàbí bàjẹ́ ní ìrísí?",
+    "q_yellow_green_patches": "Ṣé àwọn ewé ní àbàwọ́n pupa-ìyeyè àti àwọ̀ ewé tí ó dàpọ̀?",
+    "q_yellow_along_veins": "Ṣé àbàwọ́n pupa-ìyeyè wà lẹ́gbẹ̀ẹ́ iṣan àwọn ewé àgbà ìsàlẹ̀?",
+    "q_brown_streak_or_root_rot": "Ṣé ìlà àwọ̀ ilẹ̀ wà lórí igi tútù, tàbí jíjẹrà àwọ̀ ilẹ̀ nínú gbòǹgbò?",
+    "q_wet_spots_or_wilting": "Ṣé àbàwọ́n onígun tí ó dàbí ẹni pé ó tutù wà, tàbí orí ọ̀mùnú ń rọ tí ó sì ń kú?",
+    "q_tiny_yellow_dots": "Ṣé àwọn ewé ti ṣá, pẹ̀lú àmì kékeré pupa-ìyeyè, tí ewé òkè sì kéré tí wọ́n sì kóra jọ?",
+    "q_ragged_holes_frass": "Ṣé ihò wà nínú ewé, pẹ̀lú ìgbẹ́ tí ó dàbí ìyẹ̀fun igi ní àárín?",
+    "q_powdery_rust_spots": "Ṣé àbàwọ́n kékeré bí ìyẹ̀fun pupa-àwọ̀ ilẹ̀ wà tí ó ń lẹ̀ mọ́ ìka?",
+    "q_long_grey_lesions": "Ṣé àbàwọ́n gígùn àwọ̀ eérú tàbí àwọ̀ ilẹ̀ fẹ́ẹ́rẹ́ wà, bí sìgá?",
+    "q_broken_yellow_streaks": "Ṣé ìlà tínínrín pupa-ìyeyè tàbí funfun tí ó já wà lẹ́gbẹ̀ẹ́ iṣan ewé?",
+    "q_sudden_wilt_green": "Ṣé gbogbo ọ̀gbìn náà ń rọ kíákíá nígbà tí ewé rẹ̀ ṣì jẹ́ àwọ̀ ewé?",
+    "q_small_curled_yellow_edges": "Ṣé àwọn ewé kéré, wọ́n ká sókè, tí etí wọn sì jẹ́ pupa-ìyeyè?",
+    "q_leaf_mines_fruit_holes": "Ṣé ọ̀nà funfun tí ó lọ́ wà nínú ewé, tàbí ihò kékeré nínú èso?",
+    "q_dark_wet_patches_spread": "Ṣé àbàwọ́n dúdú ńlá tí ó dàbí ẹni pé ó tutù wà tí ó ń tàn kálẹ̀ kíákíá lẹ́yìn òjò?",
+    "q_target_ring_spots": "Ṣé àbàwọ́n àwọ̀ ilẹ̀ pẹ̀lú òrùka bí àmì ìtafà wà lórí ewé ìsàlẹ̀?"
+  },
+  "diagnoses": {
+    "cassava_mosaic": {
+      "name": "Ó ṣeé ṣe kí ó jẹ́ àrùn mosaic ẹ̀gẹ́",
+      "audio": "d_cassava_mosaic.mp3"
+    },
+    "cassava_brown_streak": {
+      "name": "Ó ṣeé ṣe kí ó jẹ́ àrùn ìlà àwọ̀ ilẹ̀ ẹ̀gẹ́",
+      "audio": "d_cassava_brown_streak.mp3"
+    },
+    "cassava_bacterial_blight": {
+      "name": "Ó ṣeé ṣe kí ó jẹ́ àrùn bakitéríà ẹ̀gẹ́",
+      "audio": "d_cassava_bacterial_blight.mp3"
+    },
+    "cassava_green_mite": {
+      "name": "Ó ṣeé ṣe kí ó jẹ́ kòkòrò green mite ẹ̀gẹ́",
+      "audio": "d_cassava_green_mite.mp3"
+    },
+    "machine_healthy": {
+      "name": "Ìró ẹ̀rọ dàbí ẹni pé ó dára",
+      "audio": "d_machine_healthy.mp3"
+    },
+    "machine_fault": {
+      "name": "Ó ṣeé ṣe kí ẹ̀rọ ní àbùkù",
+      "audio": "d_machine_fault.mp3"
+    },
+    "maize_fall_armyworm": {
+      "name": "Ó ṣeé ṣe kí ó jẹ́ kòkòrò fall armyworm",
+      "audio": "d_maize_fall_armyworm.mp3"
+    },
+    "maize_common_rust": {
+      "name": "Ó ṣeé ṣe kí ó jẹ́ àrùn ìpẹtà àgbàdo",
+      "audio": "d_maize_common_rust.mp3"
+    },
+    "maize_northern_leaf_blight": {
+      "name": "Ó ṣeé ṣe kí ó jẹ́ àrùn àbàwọ́n gígùn ewé àgbàdo",
+      "audio": "d_maize_northern_leaf_blight.mp3"
+    },
+    "maize_streak_virus": {
+      "name": "Ó ṣeé ṣe kí ó jẹ́ fáírọ́ọ̀sì ìlà àgbàdo",
+      "audio": "d_maize_streak_virus.mp3"
+    },
+    "tomato_bacterial_wilt": {
+      "name": "Ó ṣeé ṣe kí ó jẹ́ àrùn rírọ bakitéríà",
+      "audio": "d_tomato_bacterial_wilt.mp3"
+    },
+    "tomato_yellow_leaf_curl": {
+      "name": "Ó ṣeé ṣe kí ó jẹ́ fáírọ́ọ̀sì kíká ewé tòmátì",
+      "audio": "d_tomato_yellow_leaf_curl.mp3"
+    },
+    "tomato_tuta_absoluta": {
+      "name": "Ó ṣeé ṣe kí ó jẹ́ kòkòrò Tuta absoluta",
+      "audio": "d_tomato_tuta_absoluta.mp3"
+    },
+    "tomato_late_blight": {
+      "name": "Ó ṣeé ṣe kí ó jẹ́ àrùn late blight",
+      "audio": "d_tomato_late_blight.mp3"
+    },
+    "tomato_early_blight": {
+      "name": "Ó ṣeé ṣe kí ó jẹ́ àrùn early blight",
+      "audio": "d_tomato_early_blight.mp3"
+    },
+    "cassava_healthy": {
+      "name": "Ewé ẹ̀gẹ́ dàbí ẹni pé ó ní ìlera",
+      "audio": "d_cassava_healthy.mp3"
+    },
+    "maize_healthy": {
+      "name": "Ewé àgbàdo dàbí ẹni pé ó ní ìlera",
+      "audio": "d_maize_healthy.mp3"
+    },
+    "maize_gray_leaf_spot": {
+      "name": "Ó ṣeé ṣe kí ó jẹ́ àrùn àbàwọ́n eérú",
+      "audio": "d_maize_gray_leaf_spot.mp3"
+    },
+    "tomato_healthy": {
+      "name": "Ewé tòmátì dàbí ẹni pé ó ní ìlera",
+      "audio": "d_tomato_healthy.mp3"
+    },
+    "tomato_other_leaf_problem": {
+      "name": "Ó ṣeé ṣe kí ó jẹ́ àrùn ewé tòmátì, a kò mọ irú rẹ̀",
+      "audio": "d_tomato_other_leaf_problem.mp3"
+    }
+  },
+  "steps": {
+    "remove_infected_plants": {
+      "text": "Fa àwọn ọ̀gbìn tí ó ní àrùn tu kí o sì pa wọ́n run."
+    },
+    "use_clean_cuttings": {
+      "text": "Gbin igi láti ara ọ̀gbìn tí ó ní ìlera nìkan."
+    },
+    "plant_tolerant_variety": {
+      "text": "Béèrè irú tí ó lè fara da àrùn fún àsìkò tí ń bọ̀."
+    },
+    "do_not_share_cuttings": {
+      "text": "Má ṣe fún ẹnikẹ́ni tàbí gba igi láti oko yìí."
+    },
+    "harvest_early_check_roots": {
+      "text": "Ṣàyẹ̀wò gbòǹgbò kí o sì kórè ní kùtùkùtù tí wọ́n bá ti kó àrùn."
+    },
+    "clean_tools": {
+      "text": "Fọ irinṣẹ́ gígé láàárín ọ̀gbìn kan sí èkejì."
+    },
+    "check_underside_leaves": {
+      "text": "Wo abẹ́ ewé fún kòkòrò kékeré."
+    },
+    "keep_field_weeded": {
+      "text": "Jẹ́ kí oko wà láìsí èpò."
+    },
+    "ask_extension_officer": {
+      "text": "Fi ọ̀gbìn náà han òṣìṣẹ́ àgbẹ̀."
+    },
+    "keep_regular_service": {
+      "text": "Máa tún ẹ̀rọ ṣe déédéé."
+    },
+    "rescan_if_sound_changes": {
+      "text": "Tún ṣàyẹ̀wò tí ìró bá yí padà."
+    },
+    "stop_machine": {
+      "text": "Pa ẹ̀rọ náà tí kò bá léwu."
+    },
+    "check_mounting_bolts": {
+      "text": "Rí i dájú pé àwọn bóòtù tí ó di ẹ̀rọ mú le dáadáa."
+    },
+    "check_belts_and_bearings": {
+      "text": "Ṣàyẹ̀wò bẹ́líìtì àti bíárìn bóyá wọ́n ti gbó."
+    },
+    "contact_mechanic": {
+      "text": "Pe ẹlẹ́rọ kí o tó lò ó fún ìgbà pípẹ́."
+    },
+    "check_whorls_morning": {
+      "text": "Ṣàyẹ̀wò àárín àwọn ọ̀gbìn kékeré ní àárọ̀ kùtùkùtù."
+    },
+    "crush_eggs_and_larvae": {
+      "text": "Fi ọwọ́ tẹ ẹyin àti ìdin pa."
+    },
+    "ask_officer_approved_control": {
+      "text": "Béèrè lọ́wọ́ òṣìṣẹ́ àgbẹ̀ nípa oògùn tí a fọwọ́ sí. Tẹ̀lé ìtọ́ni lórí àmì."
+    },
+    "remove_crop_residue": {
+      "text": "Kó tàbí bo ìyókù ọ̀gbìn mọ́lẹ̀ lẹ́yìn ìkórè."
+    },
+    "rotate_crops": {
+      "text": "Má ṣe gbin irú ọ̀gbìn kan náà síbí ní àsìkò tí ń bọ̀."
+    },
+    "plant_with_neighbours": {
+      "text": "Gbìn ní àkókò kan náà pẹ̀lú àwọn oko tí ó wà nítòsí ní àsìkò tí ń bọ̀."
+    },
+    "control_weeds": {
+      "text": "Dín koríko kù yíká oko."
+    },
+    "remove_wilted_with_soil": {
+      "text": "Fa àwọn ọ̀gbìn tí ó rọ tu pẹ̀lú ilẹ̀ gbòǹgbò wọn kí o sì pa wọ́n run."
+    },
+    "no_solanaceae_next_season": {
+      "text": "Má ṣe gbin tòmátì, ata tàbí ìkàn síbí ní àsìkò tí ń bọ̀."
+    },
+    "use_insect_net": {
+      "text": "Fi àwọ̀n kòkòrò dáàbò bo àwọn ọ̀gbìn kékeré."
+    },
+    "destroy_infested_leaves_fruit": {
+      "text": "Ká àwọn ewé àti èso tí ó ti bàjẹ́ kí o sì pa wọ́n run."
+    },
+    "use_pheromone_traps": {
+      "text": "Béèrè nípa pańpẹ́ pheromone fún kòkòrò yìí."
+    },
+    "remove_infected_leaves": {
+      "text": "Yọ àwọn ewé tí ó ní àrùn kí o sì pa wọ́n run."
+    },
+    "water_soil_not_leaves": {
+      "text": "Bomi rin ilẹ̀, kì í ṣe ewé."
+    },
+    "space_plants": {
+      "text": "Fi àyè sí i láàárín àwọn ọ̀gbìn kí afẹ́fẹ́ lè kọjá."
+    },
+    "mulch_soil": {
+      "text": "Fi koríko gbígbẹ bo ilẹ̀ láti dènà ìtasí omi."
+    },
+    "plant_resistant_variety": {
+      "text": "Gbin irú tí ó lè kojú àrùn ní àsìkò tí ń bọ̀."
+    },
+    "keep_checking_weekly": {
+      "text": "Máa ṣàyẹ̀wò àwọn ọ̀gbìn rẹ ní ọ̀sẹ̀ọ̀sẹ̀."
+    }
+  }
+}

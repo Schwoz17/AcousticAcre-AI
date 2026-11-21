@@ -1,0 +1,245 @@
+{
+  "lang": "fr",
+  "lang_name": "Français",
+  "version": "0.1.0-draft",
+  "reviewed": false,
+  "tts": false,
+  "draft_note": "AI-drafted, NOT reviewed. A native speaker must check every line.",
+  "reviewer": {
+    "name": "",
+    "date": "",
+    "role": ""
+  },
+  "ui": {
+    "welcome": "Bienvenue sur AcousticAcre.",
+    "choose_language": "Choisissez la langue",
+    "choose_crop": "Quelle culture ?",
+    "invalid": "Choix invalide. Réessayez.",
+    "yes": "Oui",
+    "no": "Non",
+    "not_sure": "Pas sûr. Ces signes ne correspondent pas à une seule maladie.",
+    "sms_sent": "Conseils envoyés par SMS.",
+    "repeat_or_help": "Tapez 1 pour réécouter, 2 pour recevoir les conseils par SMS, 9 pour parler à un agent agricole.",
+    "connecting": "Nous vous mettons en relation avec un agent agricole.",
+    "no_officer": "Aucun agent n'est disponible. Appelez votre service de vulgarisation local.",
+    "goodbye": "Merci. Au revoir.",
+    "disclaimer": "Conseil, pas une garantie.",
+    "help_line": "Aide : appelez le [numéro d'aide].",
+    "press_option": "Tapez {n} pour {option}.",
+    "no_input": "Nous n'avons pas reçu votre réponse. Rappelez, s'il vous plaît.",
+    "retake_blurry": "Photo floue. Tenez le téléphone immobile et reprenez.",
+    "retake_dark": "Photo trop sombre. Allez vers plus de lumière.",
+    "retake_bright": "Photo trop claire. Mettez la feuille à l'ombre et reprenez.",
+    "retake_no_leaf": "Aucune feuille trouvée. Remplissez la photo avec une feuille.",
+    "retake_too_quiet": "Rapprochez le téléphone de la machine.",
+    "retake_clipping": "Éloignez un peu le téléphone.",
+    "retake_wind": "Protégez le micro du vent.",
+    "retake_no_machine": "Machine non détectée. Est-elle en marche ?",
+    "where_model_looked": "En surbrillance : là où le modèle a regardé."
+  },
+  "crops": {
+    "cassava": "Manioc",
+    "maize": "Maïs",
+    "tomato": "Tomate"
+  },
+  "questions": {
+    "q_leaves_twisted": "Les feuilles sont-elles tordues, enroulées ou déformées ?",
+    "q_yellow_green_patches": "Les feuilles ont-elles des taches jaunes et vertes mélangées ?",
+    "q_yellow_along_veins": "Y a-t-il des taches jaunes le long des nervures des vieilles feuilles du bas ?",
+    "q_brown_streak_or_root_rot": "Y a-t-il des stries brunes sur les tiges vertes, ou une pourriture brune dans les racines ?",
+    "q_wet_spots_or_wilting": "Y a-t-il des taches anguleuses d'aspect mouillé, ou des pousses qui fanent et meurent ?",
+    "q_tiny_yellow_dots": "Les feuilles sont-elles pâles avec de petits points jaunes, et celles du haut petites et serrées ?",
+    "q_ragged_holes_frass": "Y a-t-il des trous irréguliers dans les feuilles et des déjections comme de la sciure au centre ?",
+    "q_powdery_rust_spots": "Y a-t-il de petites taches poudreuses brun-rouge qui restent sur le doigt ?",
+    "q_long_grey_lesions": "Y a-t-il de longues taches grises ou beiges, en forme de cigare ?",
+    "q_broken_yellow_streaks": "Y a-t-il de fines stries jaunes ou blanches interrompues le long des nervures ?",
+    "q_sudden_wilt_green": "La plante entière fane-t-elle vite alors que ses feuilles sont encore vertes ?",
+    "q_small_curled_yellow_edges": "Les feuilles sont-elles petites, enroulées vers le haut, avec des bords jaunes ?",
+    "q_leaf_mines_fruit_holes": "Y a-t-il des galeries pâles dans les feuilles, ou de petits trous dans les fruits ?",
+    "q_dark_wet_patches_spread": "Y a-t-il de grandes taches sombres d'aspect mouillé qui s'étendent vite après la pluie ?",
+    "q_target_ring_spots": "Y a-t-il des taches brunes avec des anneaux, comme une cible, sur les feuilles du bas ?"
+  },
+  "diagnoses": {
+    "cassava_mosaic": {
+      "name": "Mosaïque du manioc probable",
+      "audio": "d_cassava_mosaic.mp3"
+    },
+    "cassava_brown_streak": {
+      "name": "Striure brune du manioc probable",
+      "audio": "d_cassava_brown_streak.mp3"
+    },
+    "cassava_bacterial_blight": {
+      "name": "Bactériose du manioc probable",
+      "audio": "d_cassava_bacterial_blight.mp3"
+    },
+    "cassava_green_mite": {
+      "name": "Acarien vert du manioc probable",
+      "audio": "d_cassava_green_mite.mp3"
+    },
+    "machine_healthy": {
+      "name": "La machine semble normale",
+      "audio": "d_machine_healthy.mp3"
+    },
+    "machine_fault": {
+      "name": "La machine a peut-être une panne",
+      "audio": "d_machine_fault.mp3"
+    },
+    "maize_fall_armyworm": {
+      "name": "Chenille légionnaire d'automne probable",
+      "audio": "d_maize_fall_armyworm.mp3"
+    },
+    "maize_common_rust": {
+      "name": "Rouille commune probable",
+      "audio": "d_maize_common_rust.mp3"
+    },
+    "maize_northern_leaf_blight": {
+      "name": "Helminthosporiose du maïs probable",
+      "audio": "d_maize_northern_leaf_blight.mp3"
+    },
+    "maize_streak_virus": {
+      "name": "Virus de la striure du maïs probable",
+      "audio": "d_maize_streak_virus.mp3"
+    },
+    "tomato_bacterial_wilt": {
+      "name": "Flétrissement bactérien probable",
+      "audio": "d_tomato_bacterial_wilt.mp3"
+    },
+    "tomato_yellow_leaf_curl": {
+      "name": "Virus de l'enroulement jaune de la tomate probable",
+      "audio": "d_tomato_yellow_leaf_curl.mp3"
+    },
+    "tomato_tuta_absoluta": {
+      "name": "Mineuse de la tomate (Tuta absoluta) probable",
+      "audio": "d_tomato_tuta_absoluta.mp3"
+    },
+    "tomato_late_blight": {
+      "name": "Mildiou probable",
+      "audio": "d_tomato_late_blight.mp3"
+    },
+    "tomato_early_blight": {
+      "name": "Alternariose probable",
+      "audio": "d_tomato_early_blight.mp3"
+    },
+    "cassava_healthy": {
+      "name": "La feuille de manioc semble saine",
+      "audio": "d_cassava_healthy.mp3"
+    },
+    "maize_healthy": {
+      "name": "La feuille de maïs semble saine",
+      "audio": "d_maize_healthy.mp3"
+    },
+    "maize_gray_leaf_spot": {
+      "name": "Cercosporiose du maïs probable",
+      "audio": "d_maize_gray_leaf_spot.mp3"
+    },
+    "tomato_healthy": {
+      "name": "La feuille de tomate semble saine",
+      "audio": "d_tomato_healthy.mp3"
+    },
+    "tomato_other_leaf_problem": {
+      "name": "Maladie probable de la feuille de tomate, type incertain",
+      "audio": "d_tomato_other_leaf_problem.mp3"
+    }
+  },
+  "steps": {
+    "remove_infected_plants": {
+      "text": "Arrachez et détruisez les plantes malades."
+    },
+    "use_clean_cuttings": {
+      "text": "Plantez seulement des boutures de plantes saines."
+    },
+    "plant_tolerant_variety": {
+      "text": "Demandez une variété tolérante pour la saison prochaine."
+    },
+    "do_not_share_cuttings": {
+      "text": "Ne donnez ni ne prenez de boutures de ce champ."
+    },
+    "harvest_early_check_roots": {
+      "text": "Vérifiez les racines et récoltez tôt si elles sont touchées."
+    },
+    "clean_tools": {
+      "text": "Nettoyez les outils de coupe entre les plantes."
+    },
+    "check_underside_leaves": {
+      "text": "Regardez sous les feuilles pour trouver de petits acariens."
+    },
+    "keep_field_weeded": {
+      "text": "Gardez le champ désherbé."
+    },
+    "ask_extension_officer": {
+      "text": "Montrez la plante à un agent agricole."
+    },
+    "keep_regular_service": {
+      "text": "Gardez l'entretien régulier."
+    },
+    "rescan_if_sound_changes": {
+      "text": "Refaites un scan si le bruit change."
+    },
+    "stop_machine": {
+      "text": "Arrêtez la machine si c'est sans danger."
+    },
+    "check_mounting_bolts": {
+      "text": "Vérifiez que les boulons de fixation sont serrés."
+    },
+    "check_belts_and_bearings": {
+      "text": "Vérifiez l'usure des courroies et des roulements."
+    },
+    "contact_mechanic": {
+      "text": "Appelez un mécanicien avant de la faire tourner longtemps."
+    },
+    "check_whorls_morning": {
+      "text": "Regardez le cœur des jeunes plants tôt le matin."
+    },
+    "crush_eggs_and_larvae": {
+      "text": "Écrasez à la main les œufs et les chenilles."
+    },
+    "ask_officer_approved_control": {
+      "text": "Demandez à un agent agricole un traitement autorisé. Suivez l'étiquette."
+    },
+    "remove_crop_residue": {
+      "text": "Enlevez ou enfouissez les restes de culture après la récolte."
+    },
+    "rotate_crops": {
+      "text": "Ne replantez pas la même culture à cet endroit la saison prochaine."
+    },
+    "plant_with_neighbours": {
+      "text": "Semez en même temps que les champs voisins la saison prochaine."
+    },
+    "control_weeds": {
+      "text": "Limitez les herbes autour du champ."
+    },
+    "remove_wilted_with_soil": {
+      "text": "Arrachez les plantes fanées avec la terre autour des racines et détruisez-les."
+    },
+    "no_solanaceae_next_season": {
+      "text": "Ne plantez ni tomate, ni piment, ni aubergine ici la saison prochaine."
+    },
+    "use_insect_net": {
+      "text": "Protégez les jeunes plants avec un filet anti-insectes."
+    },
+    "destroy_infested_leaves_fruit": {
+      "text": "Cueillez et détruisez les feuilles et fruits abîmés."
+    },
+    "use_pheromone_traps": {
+      "text": "Renseignez-vous sur les pièges à phéromones contre ce ravageur."
+    },
+    "remove_infected_leaves": {
+      "text": "Enlevez et détruisez les feuilles malades."
+    },
+    "water_soil_not_leaves": {
+      "text": "Arrosez le sol, pas les feuilles."
+    },
+    "space_plants": {
+      "text": "Espacez les plantes pour laisser passer l'air."
+    },
+    "mulch_soil": {
+      "text": "Couvrez le sol de paillis pour éviter les éclaboussures."
+    },
+    "plant_resistant_variety": {
+      "text": "Plantez une variété résistante la saison prochaine."
+    },
+    "keep_checking_weekly": {
+      "text": "Continuez à surveiller vos plantes chaque semaine."
+    }
+  }
+}

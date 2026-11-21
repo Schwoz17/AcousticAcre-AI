@@ -1,0 +1,72 @@
+[
+  {
+    "index": 0,
+    "label": "cassava_bacterial_blight",
+    "diagnosis_id": "cassava_bacterial_blight"
+  },
+  {
+    "index": 1,
+    "label": "cassava_brown_streak",
+    "diagnosis_id": "cassava_brown_streak"
+  },
+  {
+    "index": 2,
+    "label": "cassava_green_mite",
+    "diagnosis_id": "cassava_green_mite"
+  },
+  {
+    "index": 3,
+    "label": "cassava_healthy",
+    "diagnosis_id": "cassava_healthy"
+  },
+  {
+    "index": 4,
+    "label": "cassava_mosaic",
+    "diagnosis_id": "cassava_mosaic"
+  },
+  {
+    "index": 5,
+    "label": "maize_common_rust",
+    "diagnosis_id": "maize_common_rust"
+  },
+  {
+    "index": 6,
+    "label": "maize_gray_leaf_spot",
+    "diagnosis_id": "maize_gray_leaf_spot"
+  },
+  {
+    "index": 7,
+    "label": "maize_healthy",
+    "diagnosis_id": "maize_healthy"
+  },
+  {
+    "index": 8,
+    "label": "maize_northern_leaf_blight",
+    "diagnosis_id": "maize_northern_leaf_blight"
+  },
+  {
+    "index": 9,
+    "label": "tomato_early_blight",
+    "diagnosis_id": "tomato_early_blight"
+  },
+  {
+    "index": 10,
+    "label": "tomato_healthy",
+    "diagnosis_id": "tomato_healthy"
+  },
+  {
+    "index": 11,
+    "label": "tomato_late_blight",
+    "diagnosis_id": "tomato_late_blight"
+  },
+  {
+    "index": 12,
+    "label": "tomato_other_leaf_problem",
+    "diagnosis_id": "tomato_other_leaf_problem"
+  },
+  {
+    "index": 13,
+    "label": "tomato_yellow_leaf_curl",
+    "diagnosis_id": "tomato_yellow_leaf_curl"
+  }
+]

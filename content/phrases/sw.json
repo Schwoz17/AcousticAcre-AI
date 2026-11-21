@@ -1,0 +1,245 @@
+{
+  "lang": "sw",
+  "lang_name": "Kiswahili",
+  "version": "0.1.0-draft",
+  "reviewed": false,
+  "tts": false,
+  "draft_note": "AI-drafted, NOT reviewed. A native speaker must check every line.",
+  "reviewer": {
+    "name": "",
+    "date": "",
+    "role": ""
+  },
+  "ui": {
+    "welcome": "Karibu AcousticAcre.",
+    "choose_language": "Chagua lugha",
+    "choose_crop": "Zao gani?",
+    "invalid": "Chaguo si sahihi. Jaribu tena.",
+    "yes": "Ndiyo",
+    "no": "Hapana",
+    "not_sure": "Hatuna uhakika. Dalili hizi hazilingani na ugonjwa mmoja.",
+    "sms_sent": "Ushauri umetumwa kwa SMS.",
+    "repeat_or_help": "Bonyeza 1 kurudia, 2 kupata ushauri kwa SMS, 9 kuongea na afisa ugani.",
+    "connecting": "Tunakuunganisha na afisa ugani.",
+    "no_officer": "Hakuna afisa kwa sasa. Tafadhali piga ofisi ya ugani iliyo karibu.",
+    "goodbye": "Asante. Kwaheri.",
+    "disclaimer": "Ni ushauri, si uhakika.",
+    "help_line": "Kwa msaada piga [namba ya msaada].",
+    "press_option": "Bonyeza {n} kwa {option}.",
+    "no_input": "Hatukupata jibu lako. Tafadhali piga tena.",
+    "retake_blurry": "Picha haiko wazi. Shika simu bila kutikisa upige tena.",
+    "retake_dark": "Picha ni giza sana. Nenda kwenye mwanga zaidi.",
+    "retake_bright": "Picha ina mwanga mwingi. Weka kivuli kwenye jani upige tena.",
+    "retake_no_leaf": "Hakuna jani. Jaza picha kwa jani moja.",
+    "retake_too_quiet": "Sogeza simu karibu na mashine.",
+    "retake_clipping": "Sogeza simu mbali kidogo.",
+    "retake_wind": "Kinga kipaza sauti dhidi ya upepo.",
+    "retake_no_machine": "Mashine haijasikika. Je, inafanya kazi?",
+    "where_model_looked": "Sehemu iliyoangaziwa: mahali mfumo ulipoangalia."
+  },
+  "crops": {
+    "cassava": "Muhogo",
+    "maize": "Mahindi",
+    "tomato": "Nyanya"
+  },
+  "questions": {
+    "q_leaves_twisted": "Je, majani yamepinda, yamejikunja au yameharibika umbo?",
+    "q_yellow_green_patches": "Je, majani yana mabaka ya njano na kijani yaliyochanganyika?",
+    "q_yellow_along_veins": "Je, kuna mabaka ya njano kando ya mishipa ya majani ya chini, yaliyokomaa?",
+    "q_brown_streak_or_root_rot": "Je, kuna michirizi ya kahawia kwenye mashina mabichi, au kuoza kwa kahawia ndani ya mizizi?",
+    "q_wet_spots_or_wilting": "Je, kuna madoa yenye pembe yanayoonekana kama yamelowa, au vichipukizi vinavyonyauka na kufa?",
+    "q_tiny_yellow_dots": "Je, majani yamefifia yenye vidoti vidogo vya njano, na majani ya juu ni madogo na yamebanana?",
+    "q_ragged_holes_frass": "Je, kuna matundu yasiyo sawa kwenye majani na kinyesi kama unga wa mbao katikati?",
+    "q_powdery_rust_spots": "Je, kuna madoa madogo ya unga mwekundu-kahawia yanayobaki kwenye kidole?",
+    "q_long_grey_lesions": "Je, kuna mabaka marefu ya kijivu au hudhurungi, yenye umbo la sigara?",
+    "q_broken_yellow_streaks": "Je, kuna michirizi myembamba ya njano au nyeupe iliyokatikakatika kando ya mishipa?",
+    "q_sudden_wilt_green": "Je, mmea mzima unanyauka haraka wakati majani bado ni ya kijani?",
+    "q_small_curled_yellow_edges": "Je, majani ni madogo, yamejikunja juu, na kingo za njano?",
+    "q_leaf_mines_fruit_holes": "Je, kuna njia nyeupe zinazozunguka ndani ya majani, au matundu madogo kwenye matunda?",
+    "q_dark_wet_patches_spread": "Je, kuna mabaka makubwa meusi kama yamelowa yanayoenea haraka baada ya mvua?",
+    "q_target_ring_spots": "Je, kuna madoa ya kahawia yenye duara kama shabaha kwenye majani ya chini?"
+  },
+  "diagnoses": {
+    "cassava_mosaic": {
+      "name": "Huenda ni ugonjwa wa batobato wa muhogo",
+      "audio": "d_cassava_mosaic.mp3"
+    },
+    "cassava_brown_streak": {
+      "name": "Huenda ni ugonjwa wa michirizi ya kahawia wa muhogo",
+      "audio": "d_cassava_brown_streak.mp3"
+    },
+    "cassava_bacterial_blight": {
+      "name": "Huenda ni ugonjwa wa bakteria wa muhogo",
+      "audio": "d_cassava_bacterial_blight.mp3"
+    },
+    "cassava_green_mite": {
+      "name": "Huenda ni utitiri wa kijani wa muhogo",
+      "audio": "d_cassava_green_mite.mp3"
+    },
+    "machine_healthy": {
+      "name": "Mashine inasikika kawaida",
+      "audio": "d_machine_healthy.mp3"
+    },
+    "machine_fault": {
+      "name": "Huenda mashine ina hitilafu",
+      "audio": "d_machine_fault.mp3"
+    },
+    "maize_fall_armyworm": {
+      "name": "Huenda ni viwavijeshi vamizi",
+      "audio": "d_maize_fall_armyworm.mp3"
+    },
+    "maize_common_rust": {
+      "name": "Huenda ni kutu ya mahindi",
+      "audio": "d_maize_common_rust.mp3"
+    },
+    "maize_northern_leaf_blight": {
+      "name": "Huenda ni ugonjwa wa madoa marefu ya majani (northern leaf blight)",
+      "audio": "d_maize_northern_leaf_blight.mp3"
+    },
+    "maize_streak_virus": {
+      "name": "Huenda ni virusi vya michirizi ya mahindi",
+      "audio": "d_maize_streak_virus.mp3"
+    },
+    "tomato_bacterial_wilt": {
+      "name": "Huenda ni mnyauko bakteria",
+      "audio": "d_tomato_bacterial_wilt.mp3"
+    },
+    "tomato_yellow_leaf_curl": {
+      "name": "Huenda ni virusi vya kukunjamana kwa majani ya nyanya",
+      "audio": "d_tomato_yellow_leaf_curl.mp3"
+    },
+    "tomato_tuta_absoluta": {
+      "name": "Huenda ni kantangaze (Tuta absoluta)",
+      "audio": "d_tomato_tuta_absoluta.mp3"
+    },
+    "tomato_late_blight": {
+      "name": "Huenda ni baridi kali ya nyanya (late blight)",
+      "audio": "d_tomato_late_blight.mp3"
+    },
+    "tomato_early_blight": {
+      "name": "Huenda ni ukungu wa mapema (early blight)",
+      "audio": "d_tomato_early_blight.mp3"
+    },
+    "cassava_healthy": {
+      "name": "Jani la muhogo linaonekana zima",
+      "audio": "d_cassava_healthy.mp3"
+    },
+    "maize_healthy": {
+      "name": "Jani la mahindi linaonekana zima",
+      "audio": "d_maize_healthy.mp3"
+    },
+    "maize_gray_leaf_spot": {
+      "name": "Huenda ni madoa ya kijivu ya majani",
+      "audio": "d_maize_gray_leaf_spot.mp3"
+    },
+    "tomato_healthy": {
+      "name": "Jani la nyanya linaonekana zima",
+      "audio": "d_tomato_healthy.mp3"
+    },
+    "tomato_other_leaf_problem": {
+      "name": "Huenda ni ugonjwa wa jani la nyanya, aina haijulikani",
+      "audio": "d_tomato_other_leaf_problem.mp3"
+    }
+  },
+  "steps": {
+    "remove_infected_plants": {
+      "text": "Ng'oa na uharibu mimea yenye ugonjwa."
+    },
+    "use_clean_cuttings": {
+      "text": "Panda vipandikizi kutoka mimea mizima tu."
+    },
+    "plant_tolerant_variety": {
+      "text": "Uliza aina inayostahimili kwa msimu ujao."
+    },
+    "do_not_share_cuttings": {
+      "text": "Usitoe wala kuchukua vipandikizi kutoka shamba hili."
+    },
+    "harvest_early_check_roots": {
+      "text": "Kagua mizizi na uvune mapema ikiwa imeathirika."
+    },
+    "clean_tools": {
+      "text": "Safisha vifaa vya kukatia kati ya mmea mmoja na mwingine."
+    },
+    "check_underside_leaves": {
+      "text": "Angalia chini ya majani kuona utitiri wadogo."
+    },
+    "keep_field_weeded": {
+      "text": "Weka shamba bila magugu."
+    },
+    "ask_extension_officer": {
+      "text": "Mwonyeshe afisa ugani mmea huu."
+    },
+    "keep_regular_service": {
+      "text": "Endelea na ratiba ya kawaida ya matengenezo."
+    },
+    "rescan_if_sound_changes": {
+      "text": "Pima tena kama sauti itabadilika."
+    },
+    "stop_machine": {
+      "text": "Zima mashine kama ni salama kufanya hivyo."
+    },
+    "check_mounting_bolts": {
+      "text": "Hakikisha boliti za kushikilia zimekazwa."
+    },
+    "check_belts_and_bearings": {
+      "text": "Kagua mikanda na beringi kama zimechakaa."
+    },
+    "contact_mechanic": {
+      "text": "Mpigie fundi kabla ya kuiendesha kwa muda mrefu."
+    },
+    "check_whorls_morning": {
+      "text": "Kagua katikati ya mimea michanga asubuhi na mapema."
+    },
+    "crush_eggs_and_larvae": {
+      "text": "Ponda mayai na viwavi kwa mkono."
+    },
+    "ask_officer_approved_control": {
+      "text": "Muulize afisa ugani kuhusu dawa zilizoidhinishwa. Fuata maelekezo ya lebo."
+    },
+    "remove_crop_residue": {
+      "text": "Ondoa au fukia mabaki ya mimea baada ya mavuno."
+    },
+    "rotate_crops": {
+      "text": "Usipande zao lilelile mahali hapa msimu ujao."
+    },
+    "plant_with_neighbours": {
+      "text": "Panda wakati mmoja na mashamba ya jirani msimu ujao."
+    },
+    "control_weeds": {
+      "text": "Punguza nyasi kuzunguka shamba."
+    },
+    "remove_wilted_with_soil": {
+      "text": "Ng'oa mimea iliyonyauka pamoja na udongo wa mizizi na uiharibu."
+    },
+    "no_solanaceae_next_season": {
+      "text": "Usipande nyanya, pilipili wala biringanya hapa msimu ujao."
+    },
+    "use_insect_net": {
+      "text": "Linda miche kwa neti ya kuzuia wadudu."
+    },
+    "destroy_infested_leaves_fruit": {
+      "text": "Chuma na uharibu majani na matunda yaliyoharibika."
+    },
+    "use_pheromone_traps": {
+      "text": "Uliza kuhusu mitego ya feromoni kwa mdudu huyu."
+    },
+    "remove_infected_leaves": {
+      "text": "Ondoa na uharibu majani yenye ugonjwa."
+    },
+    "water_soil_not_leaves": {
+      "text": "Mwagilia udongo, si majani."
+    },
+    "space_plants": {
+      "text": "Acha nafasi zaidi kati ya mimea ili hewa ipite."
+    },
+    "mulch_soil": {
+      "text": "Funika udongo kwa matandazo kuzuia matone kurukia majani."
+    },
+    "plant_resistant_variety": {
+      "text": "Panda aina inayostahimili msimu ujao."
+    },
+    "keep_checking_weekly": {
+      "text": "Endelea kukagua mimea yako kila wiki."
+    }
+  }
+}

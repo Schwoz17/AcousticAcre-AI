@@ -1,0 +1,246 @@
+{
+  "lang": "en",
+  "lang_name": "English",
+  "version": "0.1.0",
+  "reviewed": true,
+  "reviewer": {
+    "name": "[reviewer name]",
+    "date": "2026-11-20",
+    "role": "[role]"
+  },
+  "ui": {
+    "welcome": "Welcome to AcousticAcre.",
+    "choose_language": "Choose language",
+    "choose_crop": "Which crop?",
+    "invalid": "Invalid choice. Try again.",
+    "yes": "Yes",
+    "no": "No",
+    "not_sure": "Not sure. We could not match these signs to one disease.",
+    "sms_sent": "Steps sent by SMS.",
+    "repeat_or_help": "Press 1 to repeat, 2 to get the steps by SMS, 9 to talk to an extension officer.",
+    "connecting": "Connecting you to an extension officer.",
+    "no_officer": "No officer is available right now. Please call your local extension office.",
+    "goodbye": "Thank you. Goodbye.",
+    "disclaimer": "Guidance, not a guarantee.",
+    "help_line": "For help call [help number].",
+    "press_option": "Press {n} for {option}.",
+    "no_input": "We did not get your answer. Please call again.",
+    "retake_blurry": "Photo is blurry. Hold the phone still and retake.",
+    "retake_dark": "Photo is too dark. Move to better light.",
+    "retake_bright": "Photo is too bright. Shade the leaf and retake.",
+    "retake_no_leaf": "No leaf found. Fill the photo with one leaf.",
+    "retake_too_quiet": "Move the phone closer to the machine.",
+    "retake_clipping": "Move the phone slightly away.",
+    "retake_wind": "Shield the microphone from wind.",
+    "retake_no_machine": "Machine not detected. Is it running?",
+    "where_model_looked": "Highlighted: where the model looked.",
+    "not_sure_machine": "Not sure. This sound did not clearly match a fault or a healthy machine.",
+    "retake_wrong_crop": "This looks like a {seen} leaf, not {chosen}. Choose {seen} and scan again."
+  },
+  "crops": {
+    "cassava": "Cassava",
+    "maize": "Maize",
+    "tomato": "Tomato"
+  },
+  "questions": {
+    "q_leaves_twisted": "Are the leaves twisted, curled or misshapen?",
+    "q_yellow_green_patches": "Do the leaves have mixed yellow and green patches?",
+    "q_yellow_along_veins": "Are there yellow patches along the veins of older, lower leaves?",
+    "q_brown_streak_or_root_rot": "Are there brown streaks on green stems, or brown rot inside the roots?",
+    "q_wet_spots_or_wilting": "Are there wet-looking angular spots, or wilting and dying shoot tips?",
+    "q_tiny_yellow_dots": "Are leaves pale with tiny yellow dots, and top leaves small and bunched?",
+    "q_ragged_holes_frass": "Are there ragged holes in leaves and sawdust-like droppings in the centre?",
+    "q_powdery_rust_spots": "Are there small reddish-brown powdery spots that rub off on your finger?",
+    "q_long_grey_lesions": "Are there long grey or tan patches, shaped like a cigar?",
+    "q_broken_yellow_streaks": "Are there thin broken yellow or white streaks along the leaf veins?",
+    "q_sudden_wilt_green": "Does the whole plant wilt quickly while its leaves are still green?",
+    "q_small_curled_yellow_edges": "Are the leaves small, curled upward, with yellow edges?",
+    "q_leaf_mines_fruit_holes": "Are there pale winding tunnels inside leaves, or small holes in fruits?",
+    "q_dark_wet_patches_spread": "Are there large dark wet-looking patches that spread fast after rain?",
+    "q_target_ring_spots": "Are there brown spots with rings, like a target, on lower leaves?"
+  },
+  "diagnoses": {
+    "cassava_mosaic": {
+      "name": "Possible cassava mosaic disease",
+      "audio": "d_cassava_mosaic.mp3"
+    },
+    "cassava_brown_streak": {
+      "name": "Possible cassava brown streak disease",
+      "audio": "d_cassava_brown_streak.mp3"
+    },
+    "cassava_bacterial_blight": {
+      "name": "Possible cassava bacterial blight",
+      "audio": "d_cassava_bacterial_blight.mp3"
+    },
+    "cassava_green_mite": {
+      "name": "Possible cassava green mite",
+      "audio": "d_cassava_green_mite.mp3"
+    },
+    "machine_healthy": {
+      "name": "Machine sounds normal",
+      "audio": "d_machine_healthy.mp3"
+    },
+    "machine_fault": {
+      "name": "Machine may have a fault",
+      "audio": "d_machine_fault.mp3"
+    },
+    "maize_fall_armyworm": {
+      "name": "Possible fall armyworm",
+      "audio": "d_maize_fall_armyworm.mp3"
+    },
+    "maize_common_rust": {
+      "name": "Possible common rust",
+      "audio": "d_maize_common_rust.mp3"
+    },
+    "maize_northern_leaf_blight": {
+      "name": "Possible northern leaf blight",
+      "audio": "d_maize_northern_leaf_blight.mp3"
+    },
+    "maize_streak_virus": {
+      "name": "Possible maize streak virus",
+      "audio": "d_maize_streak_virus.mp3"
+    },
+    "tomato_bacterial_wilt": {
+      "name": "Possible bacterial wilt",
+      "audio": "d_tomato_bacterial_wilt.mp3"
+    },
+    "tomato_yellow_leaf_curl": {
+      "name": "Possible tomato yellow leaf curl virus",
+      "audio": "d_tomato_yellow_leaf_curl.mp3"
+    },
+    "tomato_tuta_absoluta": {
+      "name": "Possible tomato leafminer (Tuta absoluta)",
+      "audio": "d_tomato_tuta_absoluta.mp3"
+    },
+    "tomato_late_blight": {
+      "name": "Possible late blight",
+      "audio": "d_tomato_late_blight.mp3"
+    },
+    "tomato_early_blight": {
+      "name": "Possible early blight",
+      "audio": "d_tomato_early_blight.mp3"
+    },
+    "cassava_healthy": {
+      "name": "Cassava leaf looks healthy",
+      "audio": "d_cassava_healthy.mp3"
+    },
+    "maize_healthy": {
+      "name": "Maize leaf looks healthy",
+      "audio": "d_maize_healthy.mp3"
+    },
+    "maize_gray_leaf_spot": {
+      "name": "Possible gray leaf spot",
+      "audio": "d_maize_gray_leaf_spot.mp3"
+    },
+    "tomato_healthy": {
+      "name": "Tomato leaf looks healthy",
+      "audio": "d_tomato_healthy.mp3"
+    },
+    "tomato_other_leaf_problem": {
+      "name": "Possible tomato leaf disease, type unclear",
+      "audio": "d_tomato_other_leaf_problem.mp3"
+    }
+  },
+  "steps": {
+    "remove_infected_plants": {
+      "text": "Pull out and destroy infected plants."
+    },
+    "use_clean_cuttings": {
+      "text": "Plant only cuttings from healthy plants."
+    },
+    "plant_tolerant_variety": {
+      "text": "Ask for a tolerant variety for next season."
+    },
+    "do_not_share_cuttings": {
+      "text": "Do not give or take cuttings from this field."
+    },
+    "harvest_early_check_roots": {
+      "text": "Check roots and harvest early if they are affected."
+    },
+    "clean_tools": {
+      "text": "Clean cutting tools between plants."
+    },
+    "check_underside_leaves": {
+      "text": "Check under the leaves for tiny mites."
+    },
+    "keep_field_weeded": {
+      "text": "Keep the field weeded."
+    },
+    "ask_extension_officer": {
+      "text": "Show the plant to an extension officer."
+    },
+    "keep_regular_service": {
+      "text": "Keep the regular service schedule."
+    },
+    "rescan_if_sound_changes": {
+      "text": "Scan again if the sound changes."
+    },
+    "stop_machine": {
+      "text": "Stop the machine if it is safe to do so."
+    },
+    "check_mounting_bolts": {
+      "text": "Check that mounting bolts are tight."
+    },
+    "check_belts_and_bearings": {
+      "text": "Check belts and bearings for wear."
+    },
+    "contact_mechanic": {
+      "text": "Call a mechanic before running it for long."
+    },
+    "check_whorls_morning": {
+      "text": "Check the centre of young plants early in the morning."
+    },
+    "crush_eggs_and_larvae": {
+      "text": "Crush egg masses and caterpillars by hand."
+    },
+    "ask_officer_approved_control": {
+      "text": "Ask an extension officer about approved control. Follow the label."
+    },
+    "remove_crop_residue": {
+      "text": "Remove or bury old plant remains after harvest."
+    },
+    "rotate_crops": {
+      "text": "Do not plant the same crop in this spot next season."
+    },
+    "plant_with_neighbours": {
+      "text": "Plant at the same time as nearby farms next season."
+    },
+    "control_weeds": {
+      "text": "Keep grass weeds down around the field."
+    },
+    "remove_wilted_with_soil": {
+      "text": "Pull out wilted plants with the soil around the roots and destroy them."
+    },
+    "no_solanaceae_next_season": {
+      "text": "Do not plant tomato, pepper or eggplant here next season."
+    },
+    "use_insect_net": {
+      "text": "Protect seedlings with insect netting."
+    },
+    "destroy_infested_leaves_fruit": {
+      "text": "Pick and destroy damaged leaves and fruits."
+    },
+    "use_pheromone_traps": {
+      "text": "Ask about pheromone traps for this pest."
+    },
+    "remove_infected_leaves": {
+      "text": "Remove and destroy infected leaves."
+    },
+    "water_soil_not_leaves": {
+      "text": "Water the soil, not the leaves."
+    },
+    "space_plants": {
+      "text": "Give plants more space so air can move."
+    },
+    "mulch_soil": {
+      "text": "Cover the soil with mulch to stop splashing."
+    },
+    "plant_resistant_variety": {
+      "text": "Plant a resistant variety next season."
+    },
+    "keep_checking_weekly": {
+      "text": "Keep checking your plants every week."
+    }
+  },
+  "tts": true
+}

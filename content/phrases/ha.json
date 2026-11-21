@@ -1,0 +1,246 @@
+{
+  "lang": "ha",
+  "lang_name": "Hausa",
+  "version": "0.1.0-draft",
+  "reviewed": false,
+  "tts": false,
+  "draft_note": "AI-drafted, NOT reviewed. A native speaker must check every line.",
+  "reviewer": {
+    "name": "",
+    "date": "",
+    "role": ""
+  },
+  "ui": {
+    "welcome": "Barka da zuwa AcousticAcre.",
+    "choose_language": "Zaɓi harshe",
+    "choose_crop": "Wane amfanin gona?",
+    "invalid": "Zaɓin bai yi daidai ba. Sake gwadawa.",
+    "yes": "Eh",
+    "no": "A'a",
+    "not_sure": "Ba mu da tabbas. Waɗannan alamu ba su dace da cuta ɗaya ba.",
+    "sms_sent": "An aika matakai ta SMS.",
+    "repeat_or_help": "Danna 1 don maimaitawa, 2 don karɓar matakai ta SMS, 9 don magana da jami'in gona.",
+    "connecting": "Muna haɗa ka da jami'in gona.",
+    "no_officer": "Babu jami'i a yanzu. Da fatan ka kira ofishin jami'an gona na kusa.",
+    "goodbye": "Na gode. Sai an jima.",
+    "disclaimer": "Shawara ce, ba tabbaci ba.",
+    "help_line": "Danna *384*4074# a kowane lokaci don sake dubawa.",
+    "press_option": "Danna {n} don {option}.",
+    "no_input": "Ba mu sami amsarka ba. Da fatan ka sake kira.",
+    "retake_blurry": "Hoton bai fito sosai ba. Riƙe wayar a tsaye ka sake ɗauka.",
+    "retake_dark": "Hoton ya yi duhu sosai. Matsa zuwa wurin da haske.",
+    "retake_bright": "Hoton ya yi haske sosai. Sanya inuwa a kan ganyen ka sake ɗauka.",
+    "retake_no_leaf": "Ba a ga ganye ba. Cika hoton da ganye ɗaya.",
+    "retake_too_quiet": "Kawo wayar kusa da injin.",
+    "retake_clipping": "Ɗan nisanta wayar kaɗan.",
+    "retake_wind": "Kare makirufo daga iska.",
+    "retake_no_machine": "Ba a ji injin ba. Shin yana aiki?",
+    "where_model_looked": "Wurin da aka haskaka: inda tsarin ya duba.",
+    "not_sure_machine": "Ba mu da tabbas. Wannan sautin bai nuna matsala ko lafiyar inji a fili ba."
+  },
+  "crops": {
+    "cassava": "Rogo",
+    "maize": "Masara",
+    "tomato": "Tumatur"
+  },
+  "questions": {
+    "q_leaves_twisted": "Ganyayyaki sun murɗe, sun naɗe ko sun lalace?",
+    "q_yellow_green_patches": "Ganyayyaki suna da tabo masu ruwan ɗorawa da kore a gauraye?",
+    "q_yellow_along_veins": "Akwai tabo masu ruwan ɗorawa a gefen jijiyoyin tsofaffin ganyayyaki na ƙasa?",
+    "q_brown_streak_or_root_rot": "Akwai layuka masu ruwan ƙasa a kan kara kore, ko ruɓewa mai ruwan ƙasa a cikin saiwa?",
+    "q_wet_spots_or_wilting": "Akwai tabo masu kusurwa da suka yi kamar sun jiƙe, ko ƙarshen tsiro yana yaushi yana mutuwa?",
+    "q_tiny_yellow_dots": "Ganyayyaki sun kode da ƙananan ɗigo masu ruwan ɗorawa, kuma ganyen sama ƙanana ne a haɗe?",
+    "q_ragged_holes_frass": "Akwai ramuka marasa tsari a ganye da kashi kamar garin katako a tsakiya?",
+    "q_powdery_rust_spots": "Akwai ƙananan tabo masu gari ja-ruwan ƙasa da ke manne wa yatsa?",
+    "q_long_grey_lesions": "Akwai dogayen tabo masu launin toka ko ruwan ƙasa mai haske, kamar sigari?",
+    "q_broken_yellow_streaks": "Akwai siraran layuka masu ruwan ɗorawa ko fari da suka katse a gefen jijiyoyin ganye?",
+    "q_sudden_wilt_green": "Dukan shukar tana yaushi da sauri alhali ganyayyakinta har yanzu kore ne?",
+    "q_small_curled_yellow_edges": "Ganyayyaki ƙanana ne, sun naɗe zuwa sama, da gefuna masu ruwan ɗorawa?",
+    "q_leaf_mines_fruit_holes": "Akwai hanyoyi farare masu karkata a cikin ganye, ko ƙananan ramuka a 'ya'yan itace?",
+    "q_dark_wet_patches_spread": "Akwai manyan tabo baƙaƙe kamar sun jiƙe da ke yaɗuwa da sauri bayan ruwan sama?",
+    "q_target_ring_spots": "Akwai tabo masu ruwan ƙasa da zobba kamar abin harbi a ganyayyakin ƙasa?"
+  },
+  "diagnoses": {
+    "cassava_mosaic": {
+      "name": "Mai yiwuwa cutar mosaic ta rogo",
+      "audio": "d_cassava_mosaic.mp3"
+    },
+    "cassava_brown_streak": {
+      "name": "Mai yiwuwa cutar layukan ruwan ƙasa ta rogo",
+      "audio": "d_cassava_brown_streak.mp3"
+    },
+    "cassava_bacterial_blight": {
+      "name": "Mai yiwuwa cutar ƙwayoyin cuta ta rogo",
+      "audio": "d_cassava_bacterial_blight.mp3"
+    },
+    "cassava_green_mite": {
+      "name": "Mai yiwuwa ƙwarin green mite na rogo",
+      "audio": "d_cassava_green_mite.mp3"
+    },
+    "machine_healthy": {
+      "name": "Injin yana jin kamar lafiya",
+      "audio": "d_machine_healthy.mp3"
+    },
+    "machine_fault": {
+      "name": "Mai yiwuwa injin yana da matsala",
+      "audio": "d_machine_fault.mp3"
+    },
+    "maize_fall_armyworm": {
+      "name": "Mai yiwuwa tsutsar fall armyworm",
+      "audio": "d_maize_fall_armyworm.mp3"
+    },
+    "maize_common_rust": {
+      "name": "Mai yiwuwa cutar tsatsa ta masara",
+      "audio": "d_maize_common_rust.mp3"
+    },
+    "maize_northern_leaf_blight": {
+      "name": "Mai yiwuwa cutar dogayen tabo ta ganyen masara",
+      "audio": "d_maize_northern_leaf_blight.mp3"
+    },
+    "maize_streak_virus": {
+      "name": "Mai yiwuwa ƙwayar cutar layuka ta masara",
+      "audio": "d_maize_streak_virus.mp3"
+    },
+    "tomato_bacterial_wilt": {
+      "name": "Mai yiwuwa yaushin ƙwayoyin cuta",
+      "audio": "d_tomato_bacterial_wilt.mp3"
+    },
+    "tomato_yellow_leaf_curl": {
+      "name": "Mai yiwuwa ƙwayar cutar naɗewar ganyen tumatur",
+      "audio": "d_tomato_yellow_leaf_curl.mp3"
+    },
+    "tomato_tuta_absoluta": {
+      "name": "Mai yiwuwa ƙwarin Tuta absoluta",
+      "audio": "d_tomato_tuta_absoluta.mp3"
+    },
+    "tomato_late_blight": {
+      "name": "Mai yiwuwa cutar late blight",
+      "audio": "d_tomato_late_blight.mp3"
+    },
+    "tomato_early_blight": {
+      "name": "Mai yiwuwa cutar early blight",
+      "audio": "d_tomato_early_blight.mp3"
+    },
+    "cassava_healthy": {
+      "name": "Ganyen rogo yana da lafiya",
+      "audio": "d_cassava_healthy.mp3"
+    },
+    "maize_healthy": {
+      "name": "Ganyen masara yana da lafiya",
+      "audio": "d_maize_healthy.mp3"
+    },
+    "maize_gray_leaf_spot": {
+      "name": "Mai yiwuwa cutar tabo masu launin toka",
+      "audio": "d_maize_gray_leaf_spot.mp3"
+    },
+    "tomato_healthy": {
+      "name": "Ganyen tumatur yana da lafiya",
+      "audio": "d_tomato_healthy.mp3"
+    },
+    "tomato_other_leaf_problem": {
+      "name": "Mai yiwuwa cutar ganyen tumatur, ba a san iri ba",
+      "audio": "d_tomato_other_leaf_problem.mp3"
+    }
+  },
+  "steps": {
+    "remove_infected_plants": {
+      "text": "Tumɓuke ka lalata shuke-shuken da ke da cuta."
+    },
+    "use_clean_cuttings": {
+      "text": "Shuka kara daga shuke-shuke masu lafiya kawai."
+    },
+    "plant_tolerant_variety": {
+      "text": "Nemi irin da ke jure cuta don damina mai zuwa."
+    },
+    "do_not_share_cuttings": {
+      "text": "Kada ka bayar ko karɓi kara daga wannan gona."
+    },
+    "harvest_early_check_roots": {
+      "text": "Duba saiwoyi ka girbe da wuri idan sun kamu."
+    },
+    "clean_tools": {
+      "text": "Wanke kayan yanka tsakanin shuka da shuka."
+    },
+    "check_underside_leaves": {
+      "text": "Duba ƙarƙashin ganye don ƙananan ƙwari."
+    },
+    "keep_field_weeded": {
+      "text": "Kiyaye gona babu ciyawa."
+    },
+    "ask_extension_officer": {
+      "text": "Nuna wa jami'in gona shukar."
+    },
+    "keep_regular_service": {
+      "text": "Ci gaba da gyaran injin akai-akai."
+    },
+    "rescan_if_sound_changes": {
+      "text": "Sake gwadawa idan sautin ya canza."
+    },
+    "stop_machine": {
+      "text": "Kashe injin idan babu haɗari."
+    },
+    "check_mounting_bolts": {
+      "text": "Tabbatar ƙusoshin da ke riƙe injin sun matsu."
+    },
+    "check_belts_and_bearings": {
+      "text": "Duba bel da bearing ko sun lalace."
+    },
+    "contact_mechanic": {
+      "text": "Kira makaniki kafin ka daɗe kana amfani da shi."
+    },
+    "check_whorls_morning": {
+      "text": "Duba tsakiyar ƙananan shuke-shuke da sassafe."
+    },
+    "crush_eggs_and_larvae": {
+      "text": "Murƙushe ƙwai da tsutsotsi da hannu."
+    },
+    "ask_officer_approved_control": {
+      "text": "Tambayi jami'in gona game da maganin da aka amince da shi. Bi umarnin kwali."
+    },
+    "remove_crop_residue": {
+      "text": "Cire ko binne ragowar shuke-shuke bayan girbi."
+    },
+    "rotate_crops": {
+      "text": "Kada ka shuka amfanin gona ɗaya a wannan wuri a damina mai zuwa."
+    },
+    "plant_with_neighbours": {
+      "text": "Shuka a lokaci ɗaya da gonakin makwabta a damina mai zuwa."
+    },
+    "control_weeds": {
+      "text": "Rage ciyawa a kewayen gona."
+    },
+    "remove_wilted_with_soil": {
+      "text": "Tumɓuke shuke-shuken da suka yi yaushi tare da ƙasar saiwa ka lalata su."
+    },
+    "no_solanaceae_next_season": {
+      "text": "Kada ka shuka tumatur, barkono ko gauta a nan a damina mai zuwa."
+    },
+    "use_insect_net": {
+      "text": "Kare ƙananan shuke-shuke da ragar hana ƙwari."
+    },
+    "destroy_infested_leaves_fruit": {
+      "text": "Tsinka ka lalata ganye da 'ya'yan da suka lalace."
+    },
+    "use_pheromone_traps": {
+      "text": "Tambayi game da tarkon pheromone na wannan ƙwarin."
+    },
+    "remove_infected_leaves": {
+      "text": "Cire ka lalata ganyayyakin da ke da cuta."
+    },
+    "water_soil_not_leaves": {
+      "text": "Zuba ruwa a ƙasa, ba a kan ganye ba."
+    },
+    "space_plants": {
+      "text": "Ba shuke-shuke ƙarin fili don iska ta wuce."
+    },
+    "mulch_soil": {
+      "text": "Rufe ƙasa da ciyawa don hana fantsamar ruwa."
+    },
+    "plant_resistant_variety": {
+      "text": "Shuka irin da ke jure cuta a damina mai zuwa."
+    },
+    "keep_checking_weekly": {
+      "text": "Ci gaba da duba shuke-shukenka kowane mako."
+    }
+  }
+}

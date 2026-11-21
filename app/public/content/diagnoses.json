@@ -1,0 +1,209 @@
+{
+  "_note": "Diagnosis ID registry. ALL crop entries, trees and steps are DRAFTS and MUST be reviewed by an agronomist or extension officer before real-farmer use.",
+  "cassava_mosaic": {
+    "domain": "crop",
+    "crop": "cassava",
+    "severity": "high",
+    "steps": [
+      "remove_infected_plants",
+      "use_clean_cuttings",
+      "plant_tolerant_variety",
+      "ask_extension_officer"
+    ]
+  },
+  "cassava_brown_streak": {
+    "domain": "crop",
+    "crop": "cassava",
+    "severity": "high",
+    "steps": [
+      "remove_infected_plants",
+      "do_not_share_cuttings",
+      "harvest_early_check_roots",
+      "ask_extension_officer"
+    ]
+  },
+  "cassava_bacterial_blight": {
+    "domain": "crop",
+    "crop": "cassava",
+    "severity": "high",
+    "steps": [
+      "remove_infected_plants",
+      "clean_tools",
+      "use_clean_cuttings",
+      "ask_extension_officer"
+    ]
+  },
+  "cassava_green_mite": {
+    "domain": "crop",
+    "crop": "cassava",
+    "severity": "medium",
+    "steps": [
+      "check_underside_leaves",
+      "keep_field_weeded",
+      "ask_extension_officer"
+    ]
+  },
+  "maize_fall_armyworm": {
+    "domain": "crop",
+    "crop": "maize",
+    "severity": "high",
+    "steps": [
+      "check_whorls_morning",
+      "crush_eggs_and_larvae",
+      "ask_officer_approved_control"
+    ]
+  },
+  "maize_common_rust": {
+    "domain": "crop",
+    "crop": "maize",
+    "severity": "medium",
+    "steps": [
+      "plant_resistant_variety",
+      "remove_crop_residue",
+      "rotate_crops",
+      "ask_extension_officer"
+    ]
+  },
+  "maize_northern_leaf_blight": {
+    "domain": "crop",
+    "crop": "maize",
+    "severity": "medium",
+    "steps": [
+      "remove_crop_residue",
+      "rotate_crops",
+      "plant_resistant_variety",
+      "ask_extension_officer"
+    ]
+  },
+  "maize_streak_virus": {
+    "domain": "crop",
+    "crop": "maize",
+    "severity": "high",
+    "steps": [
+      "remove_infected_plants",
+      "plant_with_neighbours",
+      "control_weeds",
+      "plant_resistant_variety"
+    ]
+  },
+  "tomato_bacterial_wilt": {
+    "domain": "crop",
+    "crop": "tomato",
+    "severity": "high",
+    "steps": [
+      "remove_wilted_with_soil",
+      "no_solanaceae_next_season",
+      "clean_tools",
+      "ask_extension_officer"
+    ]
+  },
+  "tomato_yellow_leaf_curl": {
+    "domain": "crop",
+    "crop": "tomato",
+    "severity": "high",
+    "steps": [
+      "remove_infected_plants",
+      "use_insect_net",
+      "plant_resistant_variety",
+      "ask_extension_officer"
+    ]
+  },
+  "tomato_tuta_absoluta": {
+    "domain": "crop",
+    "crop": "tomato",
+    "severity": "high",
+    "steps": [
+      "destroy_infested_leaves_fruit",
+      "use_pheromone_traps",
+      "ask_officer_approved_control"
+    ]
+  },
+  "tomato_late_blight": {
+    "domain": "crop",
+    "crop": "tomato",
+    "severity": "high",
+    "steps": [
+      "remove_infected_leaves",
+      "water_soil_not_leaves",
+      "space_plants",
+      "ask_extension_officer"
+    ]
+  },
+  "tomato_early_blight": {
+    "domain": "crop",
+    "crop": "tomato",
+    "severity": "medium",
+    "steps": [
+      "remove_infected_leaves",
+      "mulch_soil",
+      "rotate_crops"
+    ]
+  },
+  "cassava_healthy": {
+    "domain": "crop",
+    "crop": "cassava",
+    "severity": "low",
+    "steps": [
+      "keep_checking_weekly",
+      "use_clean_cuttings"
+    ]
+  },
+  "maize_healthy": {
+    "domain": "crop",
+    "crop": "maize",
+    "severity": "low",
+    "steps": [
+      "keep_checking_weekly",
+      "control_weeds"
+    ]
+  },
+  "maize_gray_leaf_spot": {
+    "domain": "crop",
+    "crop": "maize",
+    "severity": "medium",
+    "steps": [
+      "remove_crop_residue",
+      "rotate_crops",
+      "plant_resistant_variety",
+      "ask_extension_officer"
+    ]
+  },
+  "tomato_healthy": {
+    "domain": "crop",
+    "crop": "tomato",
+    "severity": "low",
+    "steps": [
+      "keep_checking_weekly",
+      "water_soil_not_leaves"
+    ]
+  },
+  "tomato_other_leaf_problem": {
+    "domain": "crop",
+    "crop": "tomato",
+    "severity": "medium",
+    "steps": [
+      "remove_infected_leaves",
+      "ask_extension_officer"
+    ]
+  },
+  "machine_healthy": {
+    "domain": "machine",
+    "machine": "pump",
+    "severity": "low",
+    "steps": [
+      "keep_regular_service",
+      "rescan_if_sound_changes"
+    ]
+  },
+  "machine_fault": {
+    "domain": "machine",
+    "machine": "pump",
+    "severity": "medium",
+    "steps": [
+      "stop_machine",
+      "check_mounting_bolts",
+      "check_belts_and_bearings",
+      "contact_mechanic"
+    ]
+  }
+}

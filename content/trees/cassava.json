@@ -1,0 +1,13 @@
+{
+  "_note": "DRAFT symptom tree. Must be reviewed by an agronomist or extension officer and tested on labelled cases (target >= 70% agreement) before real use.",
+  "crop": "cassava",
+  "start": "q_twisted",
+  "nodes": {
+    "q_twisted":   { "prompt": "q_leaves_twisted",      "yes": "q_mosaic",    "no": "q_vein_yellow" },
+    "q_mosaic":    { "prompt": "q_yellow_green_patches", "yes": "cassava_mosaic", "no": "q_mite" },
+    "q_vein_yellow": { "prompt": "q_yellow_along_veins", "yes": "q_stem_streak", "no": "q_wet_spots" },
+    "q_stem_streak": { "prompt": "q_brown_streak_or_root_rot", "yes": "cassava_brown_streak", "no": "UNCERTAIN" },
+    "q_wet_spots": { "prompt": "q_wet_spots_or_wilting", "yes": "cassava_bacterial_blight", "no": "q_mite" },
+    "q_mite":      { "prompt": "q_tiny_yellow_dots",    "yes": "cassava_green_mite", "no": "UNCERTAIN" }
+  }
+}
