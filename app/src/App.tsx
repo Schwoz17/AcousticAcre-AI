@@ -11,6 +11,8 @@ import Auth from './pages/Auth';
 import Onboarding from './pages/Onboarding';
 import Profile from './pages/Profile';
 import Settings from './pages/Settings';
+import SpeedTest from './pages/SpeedTest';
+import AppNotices from './components/AppNotices';
 import { getProfile, isSignedIn, PROFILE_UPDATED_EVENT, signOut } from './services/profile';
 
 function ProtectedWorkspace() {
@@ -53,7 +55,7 @@ function Workspace() {
     { to: '/help', label: 'Help & guidance', icon: CircleHelp },
   ];
   const title = links.find(item => item.to === location.pathname)?.label ||
-    (location.pathname === '/profile' ? 'Farmer profile' : location.pathname === '/settings' ? 'Settings' : 'AcousticAcre AI');
+    (location.pathname === '/profile' ? 'Farmer profile' : location.pathname === '/settings' ? 'Settings' : location.pathname === '/speed' ? 'Speed test' : 'AcousticAcre AI');
 
   function logout() {
     signOut();
@@ -105,6 +107,7 @@ function Workspace() {
           </div>
         </header>
         <div className="content">
+          <AppNotices />
           <Routes>
             <Route path="/dashboard" element={<Dashboard />} />
             <Route path="/crop" element={<CropDiagnosis />} />
@@ -113,6 +116,7 @@ function Workspace() {
             <Route path="/help" element={<Help />} />
             <Route path="/profile" element={<Profile />} />
             <Route path="/settings" element={<Settings />} />
+            <Route path="/speed" element={<SpeedTest />} />
             <Route path="*" element={<Navigate to="/dashboard" replace />} />
           </Routes>
           <footer>© 2026 AcousticAcre AI <span>Farmer-first agricultural intelligence</span></footer>

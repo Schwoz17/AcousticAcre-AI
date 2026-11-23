@@ -193,6 +193,16 @@ def ussd_reply(content: Content, text: str) -> tuple[str, Flow]:
         lines.append(content.ui(s.lang, "invalid"))
     lines.append(s.title)
     lines += [f"{i}. {o}" for i, o in enumerate(s.options, 1)]
+    if flow.lang is None and not s.error:
+        # First screen: say plainly what is kept and for how long (NDPA), in every offered language.
+        notes = []
+        for l in content.langs:
+            n = content.phrases[l]["ui"].get("privacy_sms")
+            if n and n not in notes:
+                notes.append(n)
+        candidate = "\n".join(lines + notes)
+        if len(candidate) <= USSD_MAX_CHARS - 4:
+            lines += notes
     return "CON " + _fit("\n".join(lines)), flow
 
 
@@ -229,6 +239,10 @@ def sms_text(content: Content, lang: str, diag: str, max_segments: int = 2, max_
         if sms_segments(cand)[1] <= max_segments:
             msg = cand
             break
+    # Privacy note (NDPA), only when it fits without making the SMS longer; it is always on the first USSD screen.
+    privacy = content.phrases[lang]["ui"].get("privacy_sms")
+    if privacy and sms_segments(msg + " " + privacy)[1] <= sms_segments(msg)[1]:
+        msg = msg + " " + privacy
     return msg
 
 

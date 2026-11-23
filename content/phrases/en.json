@@ -34,7 +34,9 @@
     "retake_wind": "Shield the microphone from wind.",
     "retake_no_machine": "Machine not detected. Is it running?",
     "where_model_looked": "Highlighted: where the model looked.",
-    "not_sure_machine": "Not sure. This sound did not clearly match a fault or a healthy machine."
+    "not_sure_machine": "Not sure. This sound did not clearly match a fault or a healthy machine.",
+    "retake_wrong_crop": "This looks like a {seen} leaf, not {chosen}. Choose {seen} and scan again.",
+    "privacy_sms": "Your number is kept only scrambled, deleted after 30 days."
   },
   "crops": {
     "cassava": "Cassava",

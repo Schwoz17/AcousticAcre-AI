@@ -18,6 +18,10 @@ export default function MachineDiagnosis() {
   const [audioError, setAudioError] = useState('');
   const [busy, setBusy] = useState(false);
   const [result, setResult] = useState<AiResult | null>(null);
+  const [recordId, setRecordId] = useState<string | undefined>();
+  const [levels, setLevels] = useState<number[]>(() => Array(34).fill(0));
+  const [coach, setCoach] = useState('');
+  const meter = useRef<{ ctx: AudioContext; raf: number } | null>(null);
   const audioBlob = useRef<Blob | null>(null);
   const recorder = useRef<MediaRecorder | null>(null);
   const chunks = useRef<Blob[]>([]);
@@ -48,7 +52,46 @@ export default function MachineDiagnosis() {
     if (fileInput.current) fileInput.current.value = '';
   }
 
+  /** Live level meter + recording coach (backlog #4): real microphone levels, plain advice while recording. */
+  function startMeter(mediaStream: MediaStream) {
+    try {
+      const AC: typeof AudioContext = window.AudioContext || (window as unknown as { webkitAudioContext: typeof AudioContext }).webkitAudioContext;
+      const ctx = new AC();
+      const analyser = ctx.createAnalyser();
+      analyser.fftSize = 2048;
+      ctx.createMediaStreamSource(mediaStream).connect(analyser);
+      const buf = new Float32Array(analyser.fftSize);
+      let last = 0, quiet = 0, loud = 0, frames = 0;
+      const hist: number[] = Array(34).fill(0);
+      const tick = (t: number) => {
+        analyser.getFloatTimeDomainData(buf);
+        let sum = 0, peak = 0;
+        for (let i = 0; i < buf.length; i++) { const v = Math.abs(buf[i]); sum += v * v; if (v > peak) peak = v; }
+        const rms = Math.sqrt(sum / buf.length);
+        frames++; if (rms < 0.01) quiet++; if (peak > 0.98) loud++;
+        if (t - last > 100) {                                   // update the screen ~10 times a second
+          hist.shift(); hist.push(Math.min(1, rms * 8));
+          setLevels([...hist]);
+          setCoach(loud / frames > 0.05 ? 'Too loud: move the phone back a little.'
+            : quiet / frames > 0.6 ? 'Too quiet: move closer to the machine.'
+            : 'Good: hold the phone steady.');
+          last = t; quiet = 0; loud = 0; frames = 0;
+        }
+        if (meter.current) meter.current.raf = requestAnimationFrame(tick);
+      };
+      meter.current = { ctx, raf: requestAnimationFrame(tick) };
+    } catch { /* level meter is optional */ }
+  }
+
+  function stopMeter() {
+    if (!meter.current) return;
+    cancelAnimationFrame(meter.current.raf);
+    meter.current.ctx.close().catch(() => undefined);
+    meter.current = null;
+  }
+
   function stopRecording() {
+    stopMeter();
     if (recorder.current?.state === 'recording') recorder.current.stop();
     setRecording(false);
     stream.current?.getTracks().forEach(track => track.stop());
@@ -70,6 +113,7 @@ export default function MachineDiagnosis() {
   }, [recording]);
 
   useEffect(() => () => {
+    stopMeter();
     stream.current?.getTracks().forEach(track => track.stop());
     if (audioUrl) URL.revokeObjectURL(audioUrl);
   }, [audioUrl]);
@@ -96,6 +140,8 @@ export default function MachineDiagnosis() {
       mediaRecorder.start();
       setSeconds(0);
       clearAudio();
+      setCoach('');
+      startMeter(mediaStream);
       setRecording(true);
     } catch {
       setAudioError('Microphone access was not granted. Allow microphone access or upload a recording.');
@@ -117,7 +163,7 @@ export default function MachineDiagnosis() {
     setAudioError('');
     try {
       const { result: r, record } = await runMachineDiagnosis(audioBlob.current, kind, localStorage.getItem('acousticacre.language'));
-      if (r.kind === 'diagnosis' || r.kind === 'uncertain') saveDiagnosis(record);
+      if (r.kind === 'diagnosis' || r.kind === 'uncertain') { saveDiagnosis(record); setRecordId(record.id); } else setRecordId(undefined);
       setResult(r);
     } catch {
       setAudioError('The sound could not be analysed. Please record again.');
@@ -137,8 +183,8 @@ export default function MachineDiagnosis() {
         <div className={`recorder ${recording?'is-recording':''}`}>
           <div className="mic-orb">{recording?<AudioLines size={30}/>:<Mic size={30}/>}</div>
           <div className="record-time">00:0{seconds}<span> / 00:05</span></div>
-          <div className="wave-bars" aria-hidden="true">{Array.from({length:34},(_,index)=><i key={index} style={{height:`${recording?18+Math.abs(Math.sin(index*2.1+seconds))*48:8+Math.abs(Math.sin(index*1.7))*15}px`}}/>)}</div>
-          <div className="record-caption">{recording?'Recording… keep the phone steady':audioUrl?'Audio sample ready':'Ready when your machine is running'}</div>
+          <div className="wave-bars" aria-label={recording ? 'Live microphone level' : undefined}>{levels.map((lv,index)=><i key={index} style={{height:`${recording?6+lv*66:8+Math.abs(Math.sin(index*1.7))*15}px`}}/>)}</div>
+          <div className="record-caption" aria-live="polite">{recording?(coach||'Recording… keep the phone steady'):audioUrl?'Audio sample ready':'Ready when your machine is running'}</div>
           <div className="record-controls">
             {!recording&&<button type="button" className="record-btn" onClick={startRecording}><Mic size={17}/> Record 5 seconds</button>}
             {recording&&<button type="button" className="stop-btn" onClick={stopRecording}><Square size={15} fill="currentColor"/> Stop recording</button>}
@@ -150,7 +196,7 @@ export default function MachineDiagnosis() {
         {audioError&&<p className="auth-error" role="alert">{audioError}</p>}
         <div className="quality-hint"><ShieldAlert size={17}/><span>Record in a safe location. Avoid touching moving parts. Wind and handling noise can affect audio quality. Supported upload limit: 20 MB.</span></div>
         <button className="primary-btn full-btn" disabled={!audioUrl||recording||busy} onClick={analyse}>{busy?<><LoaderCircle className="spin" size={18}/> Listening on this phone…</>:<>Analyse sound <ArrowRight size={17}/></>}</button>
-        {result&&<ResultCard result={result} onRetry={clearAudio}/>}
+        {result&&<ResultCard result={result} onRetry={clearAudio} recordId={recordId} media={audioBlob.current} subject={kind}/>}
       </section>
       <div className="privacy-note"><ShieldAlert size={16}/> Audio is analysed on this phone and never uploaded. Works offline after the first visit.</div>
     </div>

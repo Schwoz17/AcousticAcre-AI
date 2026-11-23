@@ -1,5 +1,5 @@
 import type { Diagnosis } from '../types';
-import { scanAudio, scanPhoto, type AiResult } from '../ai/engine';
+import { scanAudio, scanPhotos, type AiResult } from '../ai/engine';
 
 const STATUS: Record<AiResult['kind'], Diagnosis['status']> = {
   diagnosis: 'connected', uncertain: 'uncertain', retake: 'retake', unsupported: 'unsupported', error: 'error',
@@ -11,13 +11,13 @@ export function toDiagnosis(r: AiResult, subject: string): Diagnosis {
     label: r.kind === 'diagnosis' || r.kind === 'uncertain' ? r.name : (r.reason ?? r.name),
     confidence: Math.round(r.confidence * 100) / 100,
     status: STATUS[r.kind], createdAt: new Date().toISOString(),
-    advice: r.steps, diagnosisId: r.diagnosisId, model: r.model, lang: r.lang,
+    advice: r.steps, diagnosisId: r.diagnosisId, model: r.model, lang: r.lang, photos: r.photos,
   };
 }
 
-/** On-device crop assessment (no upload). */
-export async function runCropDiagnosis(file: Blob, crop: string, uiLanguage?: string | null) {
-  const result = await scanPhoto(file, crop, uiLanguage);
+/** On-device crop assessment (no upload). Pass two photos to combine a second angle. */
+export async function runCropDiagnosis(files: Blob | Blob[], crop: string, uiLanguage?: string | null) {
+  const result = await scanPhotos(Array.isArray(files) ? files : [files], crop, uiLanguage);
   return { result, record: toDiagnosis(result, crop) };
 }
 

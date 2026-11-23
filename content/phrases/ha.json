@@ -36,7 +36,9 @@
     "retake_wind": "Kare makirufo daga iska.",
     "retake_no_machine": "Ba a ji injin ba. Shin yana aiki?",
     "where_model_looked": "Wurin da aka haskaka: inda tsarin ya duba.",
-    "not_sure_machine": "Ba mu da tabbas. Wannan sautin bai nuna matsala ko lafiyar inji a fili ba."
+    "not_sure_machine": "Ba mu da tabbas. Wannan sautin bai nuna matsala ko lafiyar inji a fili ba.",
+    "retake_wrong_crop": "Wannan kamar ganyen {seen} ne, ba {chosen} ba. Zaɓi {seen} sannan ka sake gwadawa.",
+    "privacy_sms": "Lambarka a boye kawai ake ajiye ta, ana goge ta bayan kwana 30."
   },
   "crops": {
     "cassava": "Rogo",

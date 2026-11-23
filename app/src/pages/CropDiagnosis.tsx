@@ -47,7 +47,10 @@ export default function CropDiagnosis() {
   const [preview, setPreview] = useState('');
   const [busy, setBusy] = useState(false);
   const [result, setResult] = useState<AiResult | null>(null);
+  const [recordId, setRecordId] = useState<string | undefined>();
+  const [second, setSecond] = useState<File | null>(null);
   const input = useRef<HTMLInputElement>(null);
+  const angleInput = useRef<HTMLInputElement>(null);
 
   useEffect(() => () => { if (preview) URL.revokeObjectURL(preview); }, [preview]);
   useEffect(() => { preload('crop'); }, []);
@@ -60,6 +63,7 @@ export default function CropDiagnosis() {
     if (preview) URL.revokeObjectURL(preview);
     setFile(fileToUse);
     setPreview(URL.createObjectURL(fileToUse));
+    setSecond(null);
     setResult(null);
   }
 
@@ -67,20 +71,30 @@ export default function CropDiagnosis() {
     if (preview) URL.revokeObjectURL(preview);
     setFile(null);
     setPreview('');
+    setSecond(null);
     setResult(null);
     if (input.current) input.current.value = '';
+    if (angleInput.current) angleInput.current.value = '';
   }
 
-  async function analyse() {
+  async function analyse(extra?: File) {
     if (!file || busy) return;
     setBusy(true);
     try {
-      const { result: r, record } = await runCropDiagnosis(file, crop, localStorage.getItem('acousticacre.language'));
-      if (r.kind === 'diagnosis' || r.kind === 'uncertain') saveDiagnosis(record);
+      const photos = extra ? [file, extra] : [file];
+      const { result: r, record } = await runCropDiagnosis(photos, crop, localStorage.getItem('acousticacre.language'));
+      if (r.kind === 'diagnosis' || r.kind === 'uncertain') { saveDiagnosis(record); setRecordId(record.id); } else setRecordId(undefined);
       setResult(r);
     } finally {
       setBusy(false);
     }
+  }
+
+  /** "Not sure": take one more photo from another angle and combine both (backlog #5). */
+  function addAngle(fileToUse?: File) {
+    if (!fileToUse || !fileToUse.type.startsWith('image/')) return;
+    setSecond(fileToUse);
+    analyse(fileToUse);
   }
 
   return (
@@ -171,7 +185,10 @@ export default function CropDiagnosis() {
           <span>For a useful assessment, keep the leaf in focus and avoid shadows, blur and busy backgrounds.</span>
         </div>
 
-        <button className="primary-btn full-btn" disabled={!file || busy} onClick={analyse}>
+        <input ref={angleInput} type="file" accept="image/*" capture="environment" hidden onChange={(event) => addAngle(event.target.files?.[0])} />
+        {second && <p className="support-note">Second photo added. Both photos are checked together.</p>}
+
+        <button className="primary-btn full-btn" disabled={!file || busy} onClick={() => analyse(second ?? undefined)}>
           {busy ? (
             <><LoaderCircle className="spin" size={18} /> Checking the leaf on this phone…</>
           ) : (
@@ -179,7 +196,16 @@ export default function CropDiagnosis() {
           )}
         </button>
 
-        {result && <ResultCard result={result} onRetry={replacePhoto} />}
+        {result && (
+          <ResultCard
+            result={result}
+            onRetry={replacePhoto}
+            onAddAngle={!second ? () => angleInput.current?.click() : undefined}
+            recordId={recordId}
+            media={file}
+            subject={crop}
+          />
+        )}
       </section>
 
       <div className="privacy-note">

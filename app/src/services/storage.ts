@@ -29,3 +29,10 @@ export function clearHistory(): void {
   localStorage.removeItem(KEY);
   window.dispatchEvent(new Event(HISTORY_UPDATED_EVENT));
 }
+
+/** Record the farmer's answer to "Was this right?" on a saved result (kept on this phone only). */
+export function setFeedback(id: string, feedback: 'correct' | 'wrong'): void {
+  const next = getHistory().map(item => item.id === id ? { ...item, feedback, feedbackAt: new Date().toISOString() } : item);
+  localStorage.setItem(KEY, JSON.stringify(next));
+  window.dispatchEvent(new Event(HISTORY_UPDATED_EVENT));
+}

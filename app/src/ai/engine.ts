@@ -12,6 +12,8 @@
  */
 import { logmel, quality, decide, type DspConstants, type Thresholds } from './logmel';
 import { toTensor, photoQuality, camOverlay, type RGBA } from './image';
+import { createSession, type Feed, type Session } from './runtime';
+import { packBase } from './packs';
 
 // ------------------------------------------------------------------ types ---
 export type AiKind = 'diagnosis' | 'uncertain' | 'retake' | 'unsupported' | 'error';
@@ -29,6 +31,8 @@ export interface AiResult {
   model: string;               // pack id + version
   clipIds: string[];           // voice clip ids for speaking the result
   ms?: number;                 // time from scan start to result, on this device
+  photos?: number;             // how many photos were combined (crop)
+  backend?: 'worker' | 'main'; // where the model ran
 }
 
 interface Manifest {
@@ -60,11 +64,19 @@ export function langCode(uiLanguage: string | null | undefined): string {
 }
 
 // ----------------------------------------------------------------- caches ---
-const json = async <T>(url: string): Promise<T> => {
+/** Installed packs live in Cache Storage; everything else comes over the network or the service worker. */
+async function getFile(url: string): Promise<Response> {
+  try {
+    if (url.startsWith('/packs/') && 'caches' in window) {
+      const hit = await caches.match(url);
+      if (hit) return hit;
+    }
+  } catch { /* fall through */ }
   const r = await fetch(url);
   if (!r.ok) throw new Error(`Could not load ${url} (${r.status})`);
-  return r.json() as Promise<T>;
-};
+  return r;
+}
+const json = async <T>(url: string): Promise<T> => (await getFile(url)).json() as Promise<T>;
 const cache = new Map<string, Promise<unknown>>();
 function once<T>(key: string, make: () => Promise<T>): Promise<T> {
   if (!cache.has(key)) cache.set(key, make().catch(e => { cache.delete(key); throw e; }));
@@ -76,35 +88,31 @@ export const phrasesFor = (uiLanguage?: string | null) =>
 const english = () => once('phrases:en', () => json<Phrases>('/content/phrases/en.json'));
 const diagnoses = () => once('diagnoses', () => json<Diagnoses>('/content/diagnoses.json'));
 
-// ------------------------------------------------------------ onnxruntime ---
-// Minimal typing for the global `ort` from /ort/ort.js (onnxruntime-web).
-interface OrtTensor { data: Float32Array; dims: number[] }
-interface OrtSession { run(feeds: Record<string, unknown>): Promise<Record<string, OrtTensor>> }
-interface OrtGlobal {
-  env: { wasm: { wasmPaths: string; numThreads: number; proxy?: boolean } };
-  Tensor: new (type: string, data: Float32Array, dims: number[]) => unknown;
-  InferenceSession: { create(url: string, opts?: Record<string, unknown>): Promise<OrtSession> };
-}
-declare global { interface Window { ort?: OrtGlobal } }
-
-function getOrt(): OrtGlobal {
-  const ort = window.ort;
-  if (!ort) throw new Error('AI engine not loaded. Run "npm install" (it copies ONNX Runtime into public/ort) and reload.');
-  ort.env.wasm.wasmPaths = '/ort/';
-  ort.env.wasm.numThreads = 1;          // no SharedArrayBuffer / special headers needed
-  return ort;
-}
-
-interface Pack { manifest: Manifest; labels: Label[]; session: OrtSession; dsp?: DspConstants }
+// ------------------------------------------------------------- model packs ---
+type OrtTensor = Feed;
+interface Pack { manifest: Manifest; labels: Label[]; session: Session; dsp?: DspConstants; base: string }
 function loadPack(name: 'crop' | 'machine'): Promise<Pack> {
   return once(`pack:${name}`, async () => {
-    const base = `/models/${name}/`;
+    const base = await packBase(name);                       // an installed pack wins over the built-in one
     const manifest = await json<Manifest>(base + 'manifest.json');
     const labels = await json<Label[]>(base + manifest.labels);
-    const session = await getOrt().InferenceSession.create(base + manifest.model, { executionProviders: ['wasm'] });
+    const model = await (await getFile(base + manifest.model)).arrayBuffer();
+    const session = await createSession(name, model);
     const dsp = name === 'machine' ? await json<DspConstants>(base + 'dsp_constants.json') : undefined;
-    return { manifest, labels, session, dsp };
+    return { manifest, labels, session, dsp, base };
   });
+}
+
+/** Forget loaded models (after installing or removing a pack) so the next scan loads the new one. */
+export function resetPacks(): void {
+  for (const k of [...cache.keys()]) if (k.startsWith('pack:')) cache.delete(k);
+}
+
+/** Version of the model currently in use, e.g. "crop-core-1@0.2.0 (installed pack)". */
+export async function activeModel(name: 'crop' | 'machine'): Promise<string> {
+  const base = await packBase(name);
+  const m = await json<Manifest>(base + 'manifest.json');
+  return `${m.pack_id}@${m.version}${base.startsWith('/packs/') ? ' (installed pack)' : ' (built in)'}`;
 }
 
 /** Warm up models in the background (call once when a scan screen opens). */
@@ -192,11 +200,14 @@ async function timed(run: () => Promise<AiResult>): Promise<AiResult> {
 }
 
 export const scanPhoto = (file: Blob, cropName: string, uiLanguage?: string | null) =>
-  timed(() => scanPhotoInner(file, cropName, uiLanguage));
+  timed(() => scanPhotosInner([file], cropName, uiLanguage));
+/** Two or more photos of the same plant (e.g. a second angle after "not sure"): probabilities are averaged. */
+export const scanPhotos = (files: Blob[], cropName: string, uiLanguage?: string | null) =>
+  timed(() => scanPhotosInner(files, cropName, uiLanguage));
 export const scanAudio = (blob: Blob, machineKind: string, uiLanguage?: string | null) =>
   timed(() => scanAudioInner(blob, machineKind, uiLanguage));
 
-async function scanPhotoInner(file: Blob, cropName: string, uiLanguage?: string | null): Promise<AiResult> {
+async function scanPhotosInner(files: Blob[], cropName: string, uiLanguage?: string | null): Promise<AiResult> {
   const cropKey = CROP_KEYS[cropName];
   const en = await english();
   if (!cropKey) {
@@ -206,21 +217,31 @@ async function scanPhotoInner(file: Blob, cropName: string, uiLanguage?: string 
   try {
     const pack = await loadPack('crop');
     const { manifest: m, labels } = pack;
-    const { crop, preview } = await prepareImage(file, m.input.resize_short_side ?? 256, m.input.size?.[0] ?? 224);
-    const q = photoQuality(crop);
-    if (q !== 'ok') {
-      const p = await phrasesFor(uiLanguage);
-      return describe('crop', 'retake', undefined, 0, uiLanguage, `${m.pack_id}@${m.version}`,
-        { reason: p.ui[`retake_${q}`] ?? en.ui[`retake_${q}`] ?? 'Please retake the photo.', clipIds: [`retake_${q}`] });
-    }
-    const ort = getOrt();
-    const x = toTensor(crop, m.input.mean ?? [0.5, 0.5, 0.5], m.input.std ?? [0.5, 0.5, 0.5]);
-    const out = await pack.session.run({ [m.input.name]: new ort.Tensor('float32', x, [1, 3, crop.height, crop.width]) });
-    const logits = Array.from(out[m.output.name].data);
-    const d = decide(logits, m.temperature, m.thresholds);
-    const top = d.probs.indexOf(Math.max(...d.probs));
-    const diagId = labels[top]?.diagnosis_id;
     const model = `${m.pack_id}@${m.version}`;
+    // score every photo that passes the quality check; average their probabilities
+    let avg: number[] | null = null, used = 0, lastQ = 'ok';
+    let first: { preview: HTMLCanvasElement; cam?: OrtTensor } | null = null;
+    for (const file of files.slice(0, 3)) {
+      const { crop, preview } = await prepareImage(file, m.input.resize_short_side ?? 256, m.input.size?.[0] ?? 224);
+      const q = photoQuality(crop);
+      if (q !== 'ok') { lastQ = q; continue; }
+      const x = toTensor(crop, m.input.mean ?? [0.5, 0.5, 0.5], m.input.std ?? [0.5, 0.5, 0.5]);
+      const out = await pack.session.run({ [m.input.name]: { data: x, dims: [1, 3, crop.height, crop.width] } });
+      const p = softmax(Array.from(out[m.output.name].data), m.temperature);
+      avg = avg ? avg.map((v, i) => v + p[i]) : p;
+      used++;
+      if (!first) first = { preview, cam: m.output.cam ? out[m.output.cam] : undefined };
+    }
+    if (!avg || !first) {
+      const p = await phrasesFor(uiLanguage);
+      return describe('crop', 'retake', undefined, 0, uiLanguage, model,
+        { reason: p.ui[`retake_${lastQ}`] ?? en.ui[`retake_${lastQ}`] ?? 'Please retake the photo.', clipIds: [`retake_${lastQ}`] });
+    }
+    const probs = avg.map(v => v / used);
+    const d = decide(probs.map(v => Math.log(v + 1e-12)), 1, m.thresholds);   // T already applied
+    const top = probs.indexOf(Math.max(...probs));
+    const diagId = labels[top]?.diagnosis_id;
+    const extra = { photos: used, backend: pack.session.backend };
     // The farmer told us the crop: if the model's best guess is another crop, don't pretend.
     const wrongCrop = diagId && !diagId.startsWith(cropKey + '_');
     if (wrongCrop && d.kind === 'diagnosis') {
@@ -230,13 +251,13 @@ async function scanPhotoInner(file: Blob, cropName: string, uiLanguage?: string 
       const name = (k: string) => p.crops?.[k] ?? en.crops?.[k] ?? k;
       const tpl = p.ui.retake_wrong_crop ?? en.ui.retake_wrong_crop;
       const reason = tpl.split('{seen}').join(name(seenKey)).split('{chosen}').join(name(cropKey));
-      return describe('crop', 'retake', undefined, 0, uiLanguage, model, { reason, clipIds: [] });
+      return describe('crop', 'retake', undefined, 0, uiLanguage, model, { reason, clipIds: [], ...extra });
     }
     if (d.kind === 'uncertain' || wrongCrop) {
-      return describe('crop', 'uncertain', undefined, d.confidence, uiLanguage, model);
+      return describe('crop', 'uncertain', undefined, d.confidence, uiLanguage, model, extra);
     }
-    const overlay = m.output.cam && out[m.output.cam] ? overlayDataUrl(preview, out[m.output.cam], top) : undefined;
-    return describe('crop', 'diagnosis', diagId, d.confidence, uiLanguage, model, { overlay });
+    const overlay = first.cam ? overlayDataUrl(first.preview, first.cam, top) : undefined;
+    return describe('crop', 'diagnosis', diagId, d.confidence, uiLanguage, model, { overlay, ...extra });
   } catch (e) {
     return describe('crop', 'error', undefined, 0, uiLanguage, 'crop-core-1',
       { reason: e instanceof Error ? e.message : 'The crop model could not run on this device.' });
@@ -280,14 +301,13 @@ async function scanAudioInner(blob: Blob, machineKind: string, uiLanguage?: stri
     for (let s = 0; s + C.n_samples <= x.length; s += C.n_samples / 2) starts.push(s);
     if (!starts.length) starts.push(0);
     const en = await english();
-    const ort = getOrt();
     let avg: number[] | null = null, used = 0, lastQ = 'ok';
     for (const s of starts.slice(0, 6)) {
       const w = x.subarray(s, s + C.n_samples);
       const q = quality(w, C);
       if (q !== 'ok') { lastQ = q; continue; }
       const feats = logmel(w, C);
-      const out = await pack.session.run({ [m.input.name]: new ort.Tensor('float32', feats, [1, 1, C.n_mels, C.n_frames]) });
+      const out = await pack.session.run({ [m.input.name]: { data: feats, dims: [1, 1, C.n_mels, C.n_frames] } });
       const p = softmax(Array.from(out[m.output.name].data), m.temperature);
       avg = avg ? avg.map((v, i) => v + p[i]) : p;
       used++;
@@ -300,10 +320,38 @@ async function scanAudioInner(blob: Blob, machineKind: string, uiLanguage?: stri
     const probs = avg.map(v => v / used);
     // reuse the shared decision layer on log-probabilities (T already applied)
     const d = decide(probs.map(v => Math.log(v + 1e-12)), 1, m.thresholds);
-    if (d.kind === 'uncertain') return describe('machine', 'uncertain', undefined, d.confidence, uiLanguage, model);
-    return describe('machine', 'diagnosis', labels[d.index].diagnosis_id, d.confidence, uiLanguage, model);
+    const extra = { backend: pack.session.backend };
+    if (d.kind === 'uncertain') return describe('machine', 'uncertain', undefined, d.confidence, uiLanguage, model, extra);
+    return describe('machine', 'diagnosis', labels[d.index].diagnosis_id, d.confidence, uiLanguage, model, extra);
   } catch (e) {
     return describe('machine', 'error', undefined, 0, uiLanguage, 'machine-core-1',
       { reason: e instanceof Error ? e.message : 'The machine model could not run on this device.' });
   }
+}
+
+// --------------------------------------------------------------- benchmark ---
+export interface BenchResult { model: string; backend: 'worker' | 'main'; runs: number; p50: number; p95: number; mean: number; loadMs: number }
+
+/** Speed test from the Technical Documentation (section 13): 50 runs per model after warm-up. */
+export async function benchmark(name: 'crop' | 'machine', runs = 50): Promise<BenchResult> {
+  resetPacks();
+  const t0 = performance.now();
+  const pack = await loadPack(name);
+  const loadMs = performance.now() - t0;
+  const m = pack.manifest;
+  const dims = name === 'crop' ? [1, 3, 224, 224] : [1, 1, pack.dsp!.n_mels, pack.dsp!.n_frames];
+  const n = dims.reduce((a, b) => a * b, 1);
+  const make = () => { const d = new Float32Array(n); for (let i = 0; i < n; i++) d[i] = Math.random() * 2 - 1; return d; };
+  for (let i = 0; i < 3; i++) await pack.session.run({ [m.input.name]: { data: make(), dims } });   // warm-up
+  const times: number[] = [];
+  for (let i = 0; i < runs; i++) {
+    const data = make();
+    const t = performance.now();
+    await pack.session.run({ [m.input.name]: { data, dims } });
+    times.push(performance.now() - t);
+  }
+  times.sort((a, b) => a - b);
+  const q = (f: number) => times[Math.min(times.length - 1, Math.floor(f * times.length))];
+  return { model: `${m.pack_id}@${m.version}`, backend: pack.session.backend, runs,
+           p50: q(0.5), p95: q(0.95), mean: times.reduce((a, b) => a + b, 0) / runs, loadMs };
 }
