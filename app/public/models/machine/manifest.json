@@ -1,7 +1,7 @@
 {
   "pack_id": "machine-core-1",
   "type": "machine",
-  "version": "0.1.0",
+  "version": "0.2.0",
   "min_app_version": "1.0.0",
   "model": "model.onnx",
   "labels": "labels.json",
@@ -21,14 +21,14 @@
   "output": {
     "name": "logits"
   },
-  "temperature": 7.238109264456336,
+  "temperature": 5.901125358295367,
   "thresholds": {
     "conf": 0.5,
-    "margin": 0.2,
+    "margin": 0.15000000000000002,
     "entropy": 0.6931471805599453
   },
   "files": {
-    "model.onnx": "4c2890409f88640260c8759e6ea4327c266ce4ecaea4033320f830d1079feed1",
+    "model.onnx": "17d7219de5158e688d8a38d7ecca155c886af9151b6262043ffc750a09b0d2e1",
     "labels.json": "41c2eb28940dddd858acadd2fa2b00033d09d9bced0eb57ad4563bd4f00b28ff",
     "dsp_constants.json": "a3827710a479694f21925f930a86d7608de20e538f931d41dea67bd9dc555cd2"
   }

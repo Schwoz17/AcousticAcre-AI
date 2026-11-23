@@ -16,9 +16,10 @@ Team Nexora · Sandbox Africa Hackathon 2026 · AgriTech & Food Security
 
 | What | Data | Result | How to describe it |
 |---|---|---|---|
-| Cassava diseases (5 classes) | 1,118 field photos never used in training | **84.5% accuracy**; **92%** accurate on the 80% of photos where it is confident | Field result: quotable |
-| Maize, tomato | PlantVillage lab photos | 99% (lab) | **Not** field accuracy. A real-scene test (PlantDoc) is in `AcousticAcre_FieldData.ipynb` |
-| Pump sound (healthy vs faulty) | MIMII factory pumps, each pump scored by a model that never heard it | **0.58 macro-F1** (chance 0.36) | **Experimental.** More pumps: `AcousticAcre_MorePumps.ipynb` |
+| Cassava diseases (5 classes) | 1,118 field photos never used in training | **84.3% accuracy**; **91.6%** accurate on the 78% of photos where it is confident | Field result: quotable |
+| Maize, tomato (8 field classes) | 320 PlantDoc real-scene photos never used in training (near-duplicates removed) | **72.5% accuracy** (was 21.9% with the lab-only model); **88.7%** accurate on the 58% of photos where it is confident | Field result: quotable, small test set |
+| Maize, tomato | PlantVillage lab photos | 98.6% (lab) | **Not** field accuracy |
+| Pump sound (healthy vs faulty) | 10 MIMII factory pumps; each pump scored by a model that never heard it | **0.57 macro-F1** (chance 0.34). On 6 pumps added later: 0.50 before, **0.55** after retraining | **Experimental.** Factory pumps, not farm pumps; CC BY-NC-SA data |
 | Browser vs training sound processing | Parity test | within 2.5 × 10⁻¹² dB | The phone hears exactly what the model was trained on |
 
 When the model is not confident it says **“not sure”** and points to an extension officer or mechanic. It never gives pesticide doses.

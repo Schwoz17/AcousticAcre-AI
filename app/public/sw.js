@@ -1,11 +1,11 @@
 // AcousticAcre service worker: app shell + AI models + phrase packs work fully offline
 // after the first online visit. Bump CACHE when models or content change.
-const CACHE = 'acousticacre-v8-ai';
+const CACHE = 'acousticacre-v10-ai';
 const PACK_CACHE = 'acousticacre-packs';   // packs installed from files: never deleted by updates
 const PRECACHE = [
   '/', '/index.html', '/manifest.webmanifest',
   '/ort/ort.js', '/ai-worker.js',
-  '/models/crop/manifest.json', '/models/crop/labels.json', '/models/crop/model.int8.onnx',
+  '/models/crop/manifest.json', '/models/crop/labels.json', '/models/crop/model.onnx',
   '/models/machine/manifest.json', '/models/machine/labels.json', '/models/machine/model.onnx',
   '/models/machine/dsp_constants.json',
   '/content/diagnoses.json', '/content/phrases/en.json', '/content/phrases/ha.json',

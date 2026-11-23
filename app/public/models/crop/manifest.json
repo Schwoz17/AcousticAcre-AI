@@ -1,14 +1,14 @@
 {
   "pack_id": "crop-core-1",
   "type": "crop",
-  "version": "0.1.0",
+  "version": "0.2.0",
   "min_app_version": "1.0.0",
   "crops": [
     "cassava",
     "maize",
     "tomato"
   ],
-  "model": "model.int8.onnx",
+  "model": "model.onnx",
   "labels": "labels.json",
   "input": {
     "kind": "image",
@@ -39,14 +39,14 @@
     "name": "logits",
     "cam": "cam"
   },
-  "temperature": 0.6840502142026965,
+  "temperature": 0.6796346822391973,
   "thresholds": {
-    "conf": 0.5,
-    "margin": 0.55,
-    "entropy": 0.7924701808041613
+    "conf": 0.8000000000000003,
+    "margin": 0.0,
+    "entropy": 1.0232935744055485
   },
   "files": {
-    "model.int8.onnx": "770ae36303ae5c4a8d6818780e40f6a6b1fdeb703d17db75dcaa7ba8aa9c422a",
+    "model.onnx": "341128a13245ada42dc77d3dd0f9105554b2cf4bde50808a350cb3e90b9899f8",
     "labels.json": "cee4b6a7698ac6ad75ed3b5fbeeb99b3cf1cfae14c968005027316345d7a3821"
   }
 }
